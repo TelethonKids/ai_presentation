@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>AI based chat bots in research</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Biometrics Team" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/default-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# AI based chat bots in research
+]
+.subtitle[
+## Incorporation of ChatGPT and other LLMs into statistical workflows
+]
+.author[
+### Biometrics Team
+]
+.institute[
+### Telethon Kids Institute
+]
+.date[
+### 2024/03/27 (updated: 2024-03-20)
+]
+
+---
+
+
+
+
+class: inverse, top, center
+
+background-image: url("images/promo_image.png")
+background-size: cover
+
+# It's getting hot in here?
+
+---
+
+# It's getting hot in here?
+
+&lt;img src="images/weather_p1.jpeg" width="100%" /&gt;
+
+---
+
+# It's getting hot in here?
+
+&lt;img src="images/weather_p2.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# It's getting hot in here?
+
+&lt;img src="images/weather_p3.png" width="35%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# It's getting hot in here?
+
+&lt;img src="images/weather_p3_5.png" width="65%" style="display: block; margin: auto;" /&gt;
+
+... 7 words
+
+---
+
+# It's getting hot in here?
+
+&lt;img src="images/weather_p4.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# It's getting hot in here?
+
+&lt;img src="images/weather_p5.png" width="110%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# It's getting hot in here?
+
+&lt;img src="images/weather_p6.jpeg" width="80%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# It's getting hot in here?
+
+&lt;img src="images/weather_p7.jpeg" width="80%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Who are we?
+
+The Biometrics Team (Matt, Bethy, Wes, Zac)
+
+- The institute's Statistical Team
+- Providing statistical support via consultation
+  - Study design guidance - protocol/grant/ethics applications support 
+  - Analysis capacity - independent/outsourced analysis
+  - Many other things related to analysis
+- Arrange a chat, about anything!
+
+- biostatistics@telethonkids.org.au
+
+---
+
+# Who are we?
+
+Hacky Hour
+
+- Wednesdays - 10am to 11am in the Manda
+- Stop by, with any questions (coding, statistical, life advice)
+
+&lt;img src="images/bm_hacky.png" width="50%" /&gt;
+  
+---
+
+# Who are we?
+
+Viva Engage
+
+- Ongoing dialogue around statistics in academic research
+- Knowledge base of resources
+- General things of interest related to analysis
+
+&lt;img src="images/bm_viva_engage.png" width="65%" /&gt;
+
+---
+
+# Session Overview
+
+---
+
+# Session Overview
+
+This is an informal session, we do not have all the answers, please asks questions/add your perspective whenever relevant.
+
+*Topics:*
+
+1. Risks and data governance
+
+2. AI (LLMs) may be more powerful than you think...
+
+3. Prompt engineering
+
+4. Their are efficiencies to be gained, keep up or be left behind (?)
+
+5. Trust, and the roll of expertise in the process
+
+6. AI in other aspects of your research 
+
+7. Discussion
+
+---
+
+# Some language
+
+LLM is a term you will may be familiar with. Large Language Model, this refers to a model trained on a large value of text (generally from a variety of sources) for the **purpose of generating further text**, typically in response to prompts. 
+
+Or, AI Chat Bot. 
+
+--
+
+There are many of these out there, OpenAI's ChatGPT may be the most well known. 
+
+We'll use chat bot/AI/LLM interchangeably.
+
+---
+
+# But first, a show of hands
+
+Who here has...
+
+--
+
+- Already tried using a AI to assist in their coding?
+
+--
+
+- Who has thought about it, but didn't know where to start?
+
+--
+
+- Who has a paid subscription to an AI bot?
+
+--
+
+- Who has generated a graph using AI?
+
+--
+
+- Who has uploaded data into an AI bot?
+
+--
+
+---
+
+class: inverse, top, center
+
+background-image: url("images/promo_risk_gov.png")
+background-size: cover
+
+# Risks and data governance
+
+---
+
+# Risks and data governance
+
+Telethon Kids has an 'AI Policy' in draft - not out for review yet.
+
+**DO NOT** upload your data to an AI bot:
+- this is an ethics, governance, data governance breach
+- unless the AI resides solely on the server specific and approved within your study documentation
+
+---
+
+# Data anonymiser app
+
+Available now on a TKI server, is an app that will: 
+
+--
+
+- accept your dataset (.csv/.xlsx), and
+- return a dataset with anonymised column header
+
+--
+
+The returned dataset (.csv) has:
+
+--
+
+- obscured column headers,
+- data that broadly reflects your original data
+  - continuous (and date) data within a similar range
+  - the same number of categories for categorical data (assuming &lt;15)
+  - obsecured data for other character variables
+
+--
+
+Your data are destroyed when the app is closed. 
+
+---
+
+class: inverse, top, center
+
+background-image: url("images/promo_anonymizer.png")
+background-size: cover
+
+# Data anonymiser app - preview
+
+---
+
+# Data anonymiser app - preview
+
+
+
+---
+
+class: inverse, top, center
+
+background-image: url("images/promo_mptyt.png")
+background-size: cover
+
+# More powerful than you think
+
+---
+
+# More powerful than you think
+
+&lt;img src="images/scandal.jpg" width="75%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# More powerful than you think
+
+&lt;iframe width="100%" height="80%" src="https://www.youtube.com/embed/Sq1QZB5baNw?si=jj79UB4VXV7dkwO9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen&gt;&lt;/iframe&gt;
+
+---
+
+class: inverse, top, center
+
+background-image: url("images/promo_anonymizer.png")
+background-size: cover
+
+# Anonymizer app - V1
+
+---
+
+# Anonymizer app - V1
+
+The app we saw earlier was made without a single character of code being written by a human.
+
+&lt;iframe width="100%" height="60%" src="http://tki-hoinf-2403.ichr.uwa.edu.au:3838/shiny_anonymize_app_v1/"&gt;&lt;/iframe&gt;
+
+[http://tki-hoinf-2403.ichr.uwa.edu.au:3838/shiny_anonymize_app_v1/](http://tki-hoinf-2403.ichr.uwa.edu.au:3838/shiny_anonymize_app_v1/)
+---
+
+# Anonymizer app - V1
+
+&lt;img src="images/app_as_zip.png" width="50%" /&gt;
+
+---
+
+# Anonymizer app - V1
+
+&lt;img src="images/app_17_iterations.png" width="680" height="20%" /&gt;
+
+---
+
+# Anonymizer app - Dummy dataset
+
+The data we anonymised in the app was assembled by ChatGPT.
+
+&lt;img src="images/synth_req.png" width="1571" height="100%" /&gt;
+  
+---
+
+# Anonymizer app - Dummy dataset
+
+Did you spot?
+
+&lt;img src="images/synth_req_2.png" width="1571" height="20%" /&gt;
+  
+---
+
+# Anonymizer app - Dummy dataset
+
+![](2024-03-AI-in-stats_files/figure-html/unnamed-chunk-16-1.svg)&lt;!-- --&gt;
+  
+---
+
+# Anonymizer app - Dummy dataset
+
+![](2024-03-AI-in-stats_files/figure-html/unnamed-chunk-17-1.svg)&lt;!-- --&gt;
+  
+---
+
+# Anonymizer app - Online graph drawer
+
+&lt;img src="images/synth_plot.png" width="3096" height="100%" /&gt;
+
+---
+
+# Anonymizer app - Online graph drawer
+
+&lt;img src="images/synth_plot_2.png" width="3077" height="100%" /&gt;
+  
+---
+
+# Anonymizer app - Online graph drawer
+
+&lt;img src="images/synth_plot_3.png" width="1661" height="100%" /&gt;
+    
+---
+
+class: inverse, top, center
+
+background-image: url("images/promo_AI_other.png")
+background-size: cover
+
+# AI in other aspects of research
+
+---
+
+# AI in other aspects of research
+
+There are AI based platforms and apps to assist in many other areas of research, beyond statistical coding and analysis. 
+
+Not necessarily surprising given their strength is ingesting large volumes of text and forming connections within/between text based content.
+
+Some examples:
+
+--
+- [SciSpace - Typeset](https://typeset.io/)
+    - Paraphrasing and literature review.
+- [scholarcy - Summerizer](https://www.scholarcy.com/article-summarizer)
+    - File upload (and URL) based summerizer.
+- [consensus - Balance of evidence](https://consensus.app/)
+    - Tries to indicate whether most papers support or negate a premise.
+- [Scite - Assistant](https://scite.ai/assistant)
+    - Ask questions, get explanations with citations (and citation previews) - think Introduction.
+- [Semantic Scholar - Skim reader](https://www.semanticscholar.org/product/semantic-reader)
+    - Highlights and tags content within a paper.
+--
+
+---
+
+# Scite - Assistant
+
+&lt;img src="images/other_references.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Semantic Scholar - Skim reader
+
+&lt;img src="images/other_skim.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# AI in other aspects of research
+
+- Most offer a free demo and/or free account
+
+- Most have subscriptions that are relatively cheap ($10-$20 per month)
+
+- New/alternate platforms likely to appear regularly
+
+- Current platforms may come offline (copyright?) or be acquired and merged/closed
+
+---
+
+# Session Recap
+
+*Topics:*
+
+1. Risks and data governance
+2. AI (LLMs) may be more powerful than you think...
+3. Prompt engineering
+4. Their are efficiencies to be gained, keep up or be left behind (?)
+5. Trust, and the roll of expertise in the process
+6. AI in other aspects of your research 
+7. Discussion
+
+---
+
+class: inverse, top, center
+
+background-image: url("images/promo_image.png")
+background-size: cover
+
+# Fin. Discussion.
+
+---
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="libs/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+<style>
+.logo {
+  background-image: url(www/tki_sml.jpg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0.5em;
+  right: 0.5em;
+  width: 100px;
+  height: 100px;
+  z-index: 0;
+}
+</style>
+
+<script>
+document
+  .querySelectorAll(
+    '.remark-slide-content' +
+    ':not(.title-slide)' +
+    // add additional classes to exclude here, e.g.
+    // ':not(.inverse)' +
+    ':not(.hide-logo)'
+  )
+  .forEach(el => {
+    el.innerHTML += '<div class="logo"></div>';
+  });
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

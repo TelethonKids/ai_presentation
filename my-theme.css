@@ -1,0 +1,7 @@
+/* Extra CSS */
+.title-slide {
+  background-image: url(images/tki_pulsing.gif);
+  background-position: 100% -80%;
+  background-size: 50% 50%;
+  background-color: #fff;
+}
