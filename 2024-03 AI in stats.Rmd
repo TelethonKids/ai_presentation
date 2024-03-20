@@ -417,6 +417,29 @@ knitr::include_graphics("images/synth_plot_3.png")
     
 ---
 
+# Underutilization and Overreliance
+
+--
+
+- Can we afford to ignore AI?
+
+--
+
+- Can we afford to ignore people?
+
+--
+
+---
+
+# Sources for upcoming slides
+
+- https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4573321
+- https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10646144/ (Especially supp2)
+- "Survival Probability Calculation" in GPT history. Based on question 2 in above. 
+- What are the implications for GPT 5? Blind trust? More difficulty seeing flaws?
+
+---
+
 class: inverse, top, center
 
 background-image: url("images/promo_AI_other.png")
