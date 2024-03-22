@@ -440,6 +440,187 @@ knitr::include_graphics("images/synth_plot_3.png")
 
 ---
 
+# Can we afford to ignore people?
+
+- Is AI always correct?
+
+- When AI is incorrect, is it any less 'confident' in its responses?
+
+- Paper examining AI attempts to answer biostatistical questions: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10646144/
+
+- The study tested ChatGPT's responses to 10 questions with known answers. 
+
+- Let's see how it did...
+
+---
+
+# Results of Paper
+
+```{r echo = F, warning = F, message = F, fig.width = 12, fig.height = 6}
+# knitr::include_graphics("images/problem_table.PNG")
+
+# Create the data frame
+df <- data.frame(
+  version = c(rep("V 3.5", 10), rep("V 4.0", 10)),
+  question = c(1:10, 1:10),
+  attempts = c("3", "3", "1", "1", "Fail", "1", "Fail", "1", "Fail", "1",
+               "1", "2", "1", "1", "2", "1", "3", "1", "3", "1")
+) %>%
+  mutate(attempts = factor(attempts, levels = c("Fail", "3", "2", "1"))) %>%
+  group_by(version, attempts, .drop = F) %>% summarise(n = n())
+
+# Plotting
+ggplot(df, aes(x = attempts, y = n, fill = version)) + 
+  geom_col(color = "grey", size = 0.25) + 
+  scale_fill_manual(values = c("V 3.5" = "yellow", "V 4.0" = "purple")) +
+  # scale_x_continuous(breaks = 1:max(df$attempts)) +
+  theme_minimal() +
+  labs(title = "Performance of ChatGPT",
+       x = "Attempts",
+       y = "N Questions") +
+  theme(panel.grid.major.x = element_blank(),
+        panel.grid.minor.x = element_blank(),
+        panel.spacing.x = unit(2, "lines")) +
+  facet_wrap(~version, nrow = 1) + 
+  theme(text=element_text(size=21)) +
+  coord_flip()
+```
+
+---
+
+# Performance
+
+--
+
+- ChatGPT 3.5 got 5 questions correct on its first try.
+
+- ChatGPT 4.0 got 6 questions correct on its first try.
+
+--
+
+- ChatGPT 3.5 failed 3 questions even after being given 3 attempts
+
+- ChatGPT 4.0 did not fail any questions after being given 3 attempts. 
+
+---
+
+# One Example Reproduced
+
+The question:
+
+Suppose the probability of surviving from a particular disease is 0.9 and there are 20 patients. The number surviving will follow a Binomial distribution with p=0.9 and n=20. What is the probability that no more than 1 patient dies?
+
+--
+
+```{r echo = F, warning = F, message = F, fig.height = 5, fig.width = 6}
+# Binomial distribution parameters
+size <- 20
+prob <- 0.9
+
+# Generate data for the binomial distribution
+binom_data <- tibble(Size = 0:size,
+                     Probability = dbinom(0:size, size, prob))
+
+# Basic plot
+ggplot(binom_data, aes(x = Size, y = Probability)) + 
+  geom_col(fill = "grey") +
+  theme_minimal() +
+  theme(text=element_text(size=21)) +
+  xlim(c(8, 20.5)) +
+  labs(x = "N People Who Survive") + 
+  geom_col(data = subset(binom_data, Size >= 19), 
+           aes(x = Size, y = Probability), fill = "blue")
+```
+
+---
+
+# First Attempt
+
+```{r echo = F}
+knitr::include_graphics("images/reproduced_q1.PNG")
+```
+
+---
+
+# First Attempt
+
+```{r echo = F}
+knitr::include_graphics("images/reproduced_q2.PNG")
+```
+
+---
+
+# Binomial Distribution
+
+```{r echo = F, warning = F, message = F, fig.height = 6, fig.width = 11}
+# Binomial distribution parameters
+size <- 20
+prob <- 0.9
+
+# Generate data for the binomial distribution
+binom_data <- tibble(Size = 0:size,
+                     Probability = dbinom(0:size, size, prob))
+
+# Basic plot
+p <- ggplot(binom_data, aes(x = Size, y = Probability)) + 
+  geom_col(fill = "grey") +
+  theme_minimal()
+
+# Plot with area up to and including 19 shaded in red
+p1 <- p + geom_col(data = subset(binom_data, Size <= 19), 
+                    aes(x = Size, y = Probability), fill = "red") +
+  ggtitle("ChatGPT Calculation") +
+  xlim(c(8, 20.5)) + 
+  theme(text=element_text(size=21))
+
+# Plot with area above and including 19 shaded in blue
+p2 <- p + geom_col(data = subset(binom_data, Size >= 19), 
+                    aes(x = Size, y = Probability), fill = "blue") +
+  ggtitle("True Calculation") +
+  xlim(c(8, 20.5)) + 
+  theme(text=element_text(size=21))
+
+# Arrange the plots in one window for easy comparison
+library(gridExtra)
+grid.arrange(p1, p2, ncol = 2)
+```
+
+
+---
+
+There are two ways to get the correct answer:
+
+```{r}
+size <- 20 # Number of trials
+prob <- 0.1 # Probability of *dying*
+
+pbinom(1, size, prob)
+```
+
+```{r}
+prob <- 0.9 # Probability of *surviving*
+
+1 - pbinom(18, size, prob)
+```
+
+---
+
+# Second Attempt - Doubling Down
+
+```{r echo=FALSE, out.width = '100%', fig.align='center'}
+knitr::include_graphics("images/reproduced_q3.PNG")
+```
+
+---
+
+# Second Attempt - Doubling Down
+
+```{r echo=FALSE, out.width = '100%', fig.align='center'}
+knitr::include_graphics("images/reproduced_q4.PNG")
+```
+
+---
+
 class: inverse, top, center
 
 background-image: url("images/promo_AI_other.png")

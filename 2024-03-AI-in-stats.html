@@ -25,7 +25,7 @@ class: center, middle, inverse, title-slide
 ### Telethon Kids Institute
 ]
 .date[
-### 2024/03/27 (updated: 2024-03-20)
+### 2024/03/27 (updated: 2024-03-22)
 ]
 
 ---
@@ -374,6 +374,113 @@ Did you spot?
 - https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4573321
 - https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10646144/ (Especially supp2)
 - "Survival Probability Calculation" in GPT history. Based on question 2 in above. 
+- What are the implications for GPT 5? Blind trust? More difficulty seeing flaws?
+
+---
+
+# Can we afford to ignore people?
+
+- Is AI always correct?
+
+- When AI is incorrect, is it any less 'confident' in its responses?
+
+- Paper examining AI attempts to answer biostatistical questions: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10646144/
+
+- The study tested ChatGPT's responses to 10 questions with known answers. 
+
+- Let's see how it did...
+
+---
+
+# Results of Paper
+
+![](2024-03-AI-in-stats_files/figure-html/unnamed-chunk-21-1.png)&lt;!-- --&gt;
+
+---
+
+# Performance
+
+--
+
+- ChatGPT 3.5 got 5 questions correct on its first try.
+
+- ChatGPT 4.0 got 6 questions correct on its first try.
+
+--
+
+- ChatGPT 3.5 failed 3 questions even after being given 3 attempts
+
+- ChatGPT 4.0 did not fail any questions after being given 3 attempts. 
+
+---
+
+# One Example Reproduced
+
+The question:
+
+Suppose the probability of surviving from a particular disease is 0.9 and there are 20 patients. The number surviving will follow a Binomial distribution with p=0.9 and n=20. What is the probability that no more than 1 patient dies?
+
+--
+
+![](2024-03-AI-in-stats_files/figure-html/unnamed-chunk-22-1.png)&lt;!-- --&gt;
+
+---
+
+# First Attempt
+
+&lt;img src="images/reproduced_q1.PNG" width="1031" /&gt;
+
+---
+
+# First Attempt
+
+&lt;img src="images/reproduced_q2.PNG" width="989" /&gt;
+
+---
+
+# Binomial Distribution
+
+![](2024-03-AI-in-stats_files/figure-html/unnamed-chunk-25-1.png)&lt;!-- --&gt;
+
+
+---
+
+There are two ways to get the correct answer:
+
+
+```r
+size &lt;- 20 # Number of trials
+prob &lt;- 0.1 # Probability of *dying*
+
+pbinom(1, size, prob)
+```
+
+```
+## [1] 0.391747
+```
+
+
+```r
+prob &lt;- 0.9 # Probability of *surviving*
+
+1 - pbinom(18, size, prob)
+```
+
+```
+## [1] 0.391747
+```
+
+---
+
+# Second Attempt - Doubling Down
+
+&lt;img src="images/reproduced_q3.PNG" width="100%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Second Attempt - Doubling Down
+
+&lt;img src="images/reproduced_q4.PNG" width="100%" style="display: block; margin: auto;" /&gt;
 
 ---
 
