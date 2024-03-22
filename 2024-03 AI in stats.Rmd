@@ -621,6 +621,13 @@ knitr::include_graphics("images/reproduced_q4.PNG")
 
 ---
 
+# Third Attempt - Correct?
+
+```{r echo=FALSE, out.width = '100%', fig.align='center'}
+knitr::include_graphics("images/reproduced_q4.PNG")
+```
+
+
 class: inverse, top, center
 
 background-image: url("images/promo_AI_other.png")
