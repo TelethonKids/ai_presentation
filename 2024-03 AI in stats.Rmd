@@ -417,6 +417,100 @@ knitr::include_graphics("images/synth_plot_3.png")
     
 ---
 
+# Guiding Model Specification
+
+--
+
++ How effective could AI tools be to inform and guide data analysis?
+
+--
+
++ **Types of decisions:**
+  + Which model to run?
+  + How should data be transformed?
+  + How to account for model complexities (e.g., complex correlation nesting)?
+  + How can output be interpreted? How could this be visualised?
+  
+---
+
+# Example
+
++ Consider simulated data from the [UCLA Office of Advanced Research Computing](https://stats.idre.ucla.edu/stat/data/hdp.csv).
++ Cohort of lung cancer patients.
++ We want to explore how patient- and physician-level factors relate to lung cancer remission following treatment.
+
+-- 
+
++ How specific/informed must prompts be to make appropriate decisions?
+
+---
+
+## Data
+
+```{r}
+hpd <- read.csv(file = "hdp.csv")
+```
+
++ Some visualisations?
+
+--
+
++ **Variables**
+  + Outcome:
+    + `remission`
+  + Patient-level:
+    + `IL6`
+    + `CRP`
+    + `LengthofStay`
+    + `FamilyHx`
+    + `CancerStage`
+  + Physician-level
+    + `Experience`
+    + `DID`
+    + `HID`
+
+---
+
+## Preliminary Exploration
+
+```{r echo = T}
+hpd %>%
+  group_by(remission) %>%
+  summarise(n = n())
+```
+
+---
+
+## Preliminary Exploration
+
+```{r echo=FALSE, out.width = '100%', fig.align='center'}
+knitr::include_graphics("images/hpd_vars.png")
+```
+
+---
+
+## Pre-Modelling Analysis
+
+---
+
+## Data QC & Variable Transformation
+
+---
+
+## Modelling Suggestions
+
+---
+
+## Interpretation
+
+---
+
+## Comments
+
++ If I am new to things, how can I be sure this is correct? By knowig how to verify this, I should know what to do anyway
+
+---
+
 # Underutilization and Overreliance
 
 --
@@ -618,100 +712,6 @@ knitr::include_graphics("images/reproduced_q3.PNG")
 ```{r echo=FALSE, out.width = '100%', fig.align='center'}
 knitr::include_graphics("images/reproduced_q4.PNG")
 ```
-
----
-
-# Guiding Model Specification
-
---
-
-+ How effective could AI tools be to inform and guide data analysis?
-
---
-
-+ **Types of decisions:**
-  + Which model to run?
-  + How should data be transformed?
-  + How to account for model complexities (e.g., complex correlation nesting)?
-  + How can output be interpreted? How could this be visualised?
-  
----
-
-# Example
-
-+ Consider simulated data from the [UCLA Office of Advanced Research Computing](https://stats.idre.ucla.edu/stat/data/hdp.csv).
-+ Cohort of lung cancer patients.
-+ We want to explore how patient- and physician-level factors relate to lung cancer remission following treatment.
-
--- 
-
-+ How specific/informed must prompts be to make appropriate decisions?
-
----
-
-## Data
-
-```{r}
-hpd <- read.csv(file = "hdp.csv")
-```
-
-+ Some visualisations?
-
---
-
-+ **Variables**
-  + Outcome:
-    + `remission`
-  + Patient-level:
-    + `IL6`
-    + `CRP`
-    + `LengthofStay`
-    + `FamilyHx`
-    + `CancerStage`
-  + Physician-level
-    + `Experience`
-    + `DID`
-    + `HID`
-
----
-
-## Preliminary Exploration
-
-```{r echo = T}
-hpd %>%
-  group_by(remission) %>%
-  summarise(n = n())
-```
-
----
-
-## Preliminary Exploration
-
-```{r echo=FALSE, out.width = '100%', fig.align='center'}
-knitr::include_graphics("images/hpd_vars.png")
-```
-
----
-
-## Pre-Modelling Analysis
-
----
-
-## Data QC & Variable Transformation
-
----
-
-## Modelling Suggestions
-
----
-
-## Interpretation
-
----
-
-## Comments
-
-+ If I am new to things, how can I be sure this is correct? By knowig how to verify this, I should know what to do anyway
 
 ---
 
