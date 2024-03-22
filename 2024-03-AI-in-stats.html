@@ -355,6 +355,108 @@ Did you spot?
     
 ---
 
+# Guiding Model Specification
+
+--
+
++ How effective could AI tools be to inform and guide data analysis?
+
+--
+
++ **Types of decisions:**
+  + Which model to run?
+  + How should data be transformed?
+  + How to account for model complexities (e.g., complex correlation nesting)?
+  + How can output be interpreted? How could this be visualised?
+  
+---
+
+# Example
+
++ Consider simulated data from the [UCLA Office of Advanced Research Computing](https://stats.idre.ucla.edu/stat/data/hdp.csv).
++ Cohort of lung cancer patients.
++ We want to explore how patient- and physician-level factors relate to lung cancer remission following treatment.
+
+-- 
+
++ How specific/informed must prompts be to make appropriate decisions?
+
+---
+
+## Data
+
+
+```r
+hpd &lt;- read.csv(file = "hdp.csv")
+```
+
++ Some visualisations?
+
+--
+
++ **Variables**
+  + Outcome:
+    + `remission`
+  + Patient-level:
+    + `IL6`
+    + `CRP`
+    + `LengthofStay`
+    + `FamilyHx`
+    + `CancerStage`
+  + Physician-level
+    + `Experience`
+    + `DID`
+    + `HID`
+
+---
+
+## Preliminary Exploration
+
+
+```r
+hpd %&gt;%
+  group_by(remission) %&gt;%
+  summarise(n = n())
+```
+
+```
+## # A tibble: 2 × 2
+##   remission     n
+##       &lt;int&gt; &lt;int&gt;
+## 1         0  6004
+## 2         1  2521
+```
+
+---
+
+## Preliminary Exploration
+
+&lt;img src="images/hpd_vars.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+---
+
+## Pre-Modelling Analysis
+
+---
+
+## Data QC &amp; Variable Transformation
+
+---
+
+## Modelling Suggestions
+
+---
+
+## Interpretation
+
+---
+
+## Comments
+
++ If I am new to things, how can I be sure this is correct? By knowig how to verify this, I should know what to do anyway
+
+---
+
 # Underutilization and Overreliance
 
 --
@@ -394,7 +496,7 @@ Did you spot?
 
 # Results of Paper
 
-![](2024-03-AI-in-stats_files/figure-html/unnamed-chunk-21-1.png)&lt;!-- --&gt;
+![](2024-03-AI-in-stats_files/figure-html/unnamed-chunk-24-1.png)&lt;!-- --&gt;
 
 ---
 
@@ -422,7 +524,7 @@ Suppose the probability of surviving from a particular disease is 0.9 and there 
 
 --
 
-![](2024-03-AI-in-stats_files/figure-html/unnamed-chunk-22-1.png)&lt;!-- --&gt;
+![](2024-03-AI-in-stats_files/figure-html/unnamed-chunk-25-1.png)&lt;!-- --&gt;
 
 ---
 
@@ -440,7 +542,7 @@ Suppose the probability of surviving from a particular disease is 0.9 and there 
 
 # Binomial Distribution
 
-![](2024-03-AI-in-stats_files/figure-html/unnamed-chunk-25-1.png)&lt;!-- --&gt;
+![](2024-03-AI-in-stats_files/figure-html/unnamed-chunk-28-1.png)&lt;!-- --&gt;
 
 
 ---
