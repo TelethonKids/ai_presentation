@@ -519,7 +519,7 @@ knitr::include_graphics("images/hpd_vars.png")
 
 --
 
-- Can we afford to ignore people?
+- Can we afford to ignore humans?
 
 --
 
@@ -723,7 +723,7 @@ data.frame(
 
 ---
 
-# The Jagged Frontier
+# The Jagged, Hazy Frontier
 
 ```{r echo = F, fig.width = 12, fig.height = 8}
 # Create data for the horizontal line
@@ -768,7 +768,7 @@ ggplot() +
 
 --
 
-- How do we know where the frontier is?
+- How can we know where the frontier is?
 
 --
 
@@ -778,7 +778,7 @@ ggplot() +
 
 ---
 
-# Can we afford to ignore people?
+# Can we afford to ignore humans?
 
 - Paper examining AI attempts to answer biostatistical questions: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10646144/
 
@@ -963,11 +963,18 @@ knitr::include_graphics("images/reproduced_q4.PNG")
 knitr::include_graphics("images/reproduced_q4.PNG")
 ```
 
+# TODO - Final screenshots
 
+---
+
+# TODO - Discussion Points
+
+---
 class: inverse, top, center
 
 background-image: url("images/promo_AI_other.png")
 background-size: cover
+
 
 # AI in other aspects of research
 
