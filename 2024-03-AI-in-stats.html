@@ -7,6 +7,8 @@
     <script src="libs/header-attrs/header-attrs.js"></script>
     <link href="libs/remark-css/default.css" rel="stylesheet" />
     <link href="libs/remark-css/default-fonts.css" rel="stylesheet" />
+    <script src="libs/kePrint/kePrint.js"></script>
+    <link href="libs/lightable/lightable.css" rel="stylesheet" />
   </head>
   <body>
     <textarea id="source">
@@ -473,7 +475,7 @@ hpd %&gt;%
 
 # Sources for upcoming slides
 
-- https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4573321
+- 
 - https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10646144/ (Especially supp2)
 - "Survival Probability Calculation" in GPT history. Based on question 2 in above. 
 - What are the implications for GPT 5? Blind trust? More difficulty seeing flaws?
@@ -482,13 +484,9 @@ hpd %&gt;%
 
 # Can we ignore AI?
 
-- 
+&lt;img src="images/jagged_paper.PNG" width="80%" style="display: block; margin: auto;" /&gt;
 
----
-
-# The Jagged Frontier
-
-![](2024-03-AI-in-stats_files/figure-html/unnamed-chunk-24-1.png)&lt;!-- --&gt;
+https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4573321
 
 ---
 
@@ -504,14 +502,99 @@ hpd %&gt;%
 
 ---
 
+# The Jagged Frontier
+
+![](2024-03-AI-in-stats_files/figure-html/unnamed-chunk-27-1.png)&lt;!-- --&gt;
+
+---
+
+# The Jagged Frontier
+
+![](2024-03-AI-in-stats_files/figure-html/unnamed-chunk-28-1.png)&lt;!-- --&gt;
+
+---
+
+# Study Description
+
+- Two projects devised, one inside the frontier, the other outside.
+
+- Participants (N = 758 strategic consultants) randomised to one of the two projects.
+
+- Projects contained 18 sequential tasks of four kinds (creative, analytical, writing, persuasiveness)
+
+- Participants further randomised to either "ChatGPT Only" or "ChatGPT + Overview"
+
+- First all participants complete a baseline project without ChatGPT.
+
+- Inside/Outside groups complete respective projects.
+
+- Speed and quality of work compared between groups against baseline levels. 
+
+---
+
+# Results
+
+&lt;table class="table" style="margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Metric &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Inside.Frontier &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Outside.Frontier &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr grouplength="2"&gt;&lt;td colspan="3" style="border-bottom: 1px solid;"&gt;&lt;strong&gt;ChatGPT Only&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; Speed &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 28% &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 18% &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; Quality &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 38% &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; -13% &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr grouplength="2"&gt;&lt;td colspan="3" style="border-bottom: 1px solid;"&gt;&lt;strong&gt;ChatGPT + Overview&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; Speed &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 23% &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 30% &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; Quality &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 43% &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; -24% &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+
+# The Jagged Frontier
+
+![](2024-03-AI-in-stats_files/figure-html/unnamed-chunk-30-1.png)&lt;!-- --&gt;
+
+---
+
+# Discussion Points
+
+--
+
+- How do we know where the frontier is?
+
+--
+
+- How do we assess the quality of the output? Does this depend on the type of output?
+
+--
+
+---
 
 # Can we afford to ignore people?
 
-- Is AI always correct?
-
-- When AI is incorrect, is it any less 'confident' in its responses?
-
 - Paper examining AI attempts to answer biostatistical questions: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10646144/
+
+--
 
 - The study tested ChatGPT's responses to 10 questions with known answers. 
 
@@ -521,7 +604,7 @@ hpd %&gt;%
 
 # Results of Paper
 
-![](2024-03-AI-in-stats_files/figure-html/unnamed-chunk-27-1.png)&lt;!-- --&gt;
+![](2024-03-AI-in-stats_files/figure-html/unnamed-chunk-31-1.png)&lt;!-- --&gt;
 
 ---
 
@@ -549,7 +632,7 @@ Suppose the probability of surviving from a particular disease is 0.9 and there 
 
 --
 
-![](2024-03-AI-in-stats_files/figure-html/unnamed-chunk-28-1.png)&lt;!-- --&gt;
+![](2024-03-AI-in-stats_files/figure-html/unnamed-chunk-32-1.png)&lt;!-- --&gt;
 
 ---
 
@@ -567,7 +650,7 @@ Suppose the probability of surviving from a particular disease is 0.9 and there 
 
 # Binomial Distribution
 
-![](2024-03-AI-in-stats_files/figure-html/unnamed-chunk-31-1.png)&lt;!-- --&gt;
+![](2024-03-AI-in-stats_files/figure-html/unnamed-chunk-35-1.png)&lt;!-- --&gt;
 
 
 ---

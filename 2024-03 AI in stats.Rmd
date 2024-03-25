@@ -26,7 +26,7 @@ output:
 # - run xaringan::summon_remark() 
 
 options(htmltools.dir.version = FALSE)
-library(tidyverse); library(readxl)
+library(tidyverse); library(readxl); library(kableExtra); library(grid); library(png)
 
 theme_clean <- function() {
   theme_minimal(base_family = "Barlow Semi Condensed") +
@@ -527,7 +527,7 @@ knitr::include_graphics("images/hpd_vars.png")
 
 # Sources for upcoming slides
 
-- https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4573321
+- 
 - https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10646144/ (Especially supp2)
 - "Survival Probability Calculation" in GPT history. Based on question 2 in above. 
 - What are the implications for GPT 5? Blind trust? More difficulty seeing flaws?
@@ -536,7 +536,11 @@ knitr::include_graphics("images/hpd_vars.png")
 
 # Can we ignore AI?
 
-- 
+```{r echo=FALSE, out.width = '80%', fig.align='center'}
+knitr::include_graphics("images/jagged_paper.PNG")
+```
+
+https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4573321
 
 ---
 
@@ -622,10 +626,10 @@ my_colors <- c("Expected AI capability" = "red", "Actual AI Capability" = "blue"
 ggplot() +
   # Add horizontal line
   geom_hline(data = expected_capability, aes(yintercept = y, color = label), linetype = "dashed", size = 2) +
-  # Add points
-  geom_point(data = points_data, aes(x = x, y = y), size = 7) +
   # Add zigzag lines
   geom_path(data = zigzag_points, aes(x = x, y = y, color = "Actual AI Capability"), size = 2) +
+  # Add points
+  geom_point(data = points_data, aes(x = x, y = y), size = 7) +
   # Add labels and customize axes
   labs(y = "Perceived Task Difficulty",
        color = "Legend") +
@@ -639,14 +643,146 @@ ggplot() +
 
 ---
 
+# The Jagged Frontier
+
+```{r echo = F, fig.width = 12, fig.height = 8}
+expected_capability <- data.frame(y = 5, label = "Expected AI capability")
+
+# Create data for the points
+points_data <- data.frame(
+  x = c(1, 2, 3, 4, 5),  # Equally dispersed points on x-axis
+  y = c(7, 3, 5, 8, 4)   # Difficulty levels
+)
+
+# Define turning points for zigzag
+zigzag_points <- data.frame(
+  x = c(1, 2, 3, 4, 5),
+  y = c(6, 1, 7, 9, 4),
+  label = rep("Actual AI capability", 5)
+)
+
+# Define color palette
+my_colors <- c("Expected AI capability" = "red", "Actual AI Capability" = "blue")
+
+# Create the plot
+ggplot() +
+  # Add horizontal line
+  geom_hline(data = expected_capability, aes(yintercept = y, color = label), linetype = "dashed", size = 2) +
+  # Add zigzag lines
+  geom_path(data = zigzag_points, aes(x = x, y = y, color = "Actual AI Capability"), size = 2) +
+  # Add ribbon above and below the zigzag line
+  geom_ribbon(data = zigzag_points, aes(x = x, ymin = y, ymax = 10, fill = "Outside Frontier"), alpha = 0.2) +
+  geom_ribbon(data = zigzag_points, aes(x = x, ymin = 0, ymax = y, fill = "Inside Frontier"), alpha = 0.2) +
+  # Add points
+  geom_point(data = points_data, aes(x = x, y = y), size = 7) +
+  # Add labels and customize axes
+  labs(y = "Perceived Task Difficulty",
+       color = "Legend") +
+  scale_y_continuous(limits = c(0, 10)) +
+  scale_fill_manual(values = c("Outside Frontier" = "yellow", "Inside Frontier" = "purple")) + # Define fill colors for ribbons
+  theme_classic() +
+  theme(axis.title.x = element_blank(),   # Remove x-axis label
+        axis.text.x = element_blank(),    # Remove x-axis text
+        axis.ticks.x = element_blank(),
+        text = element_text(size = 21))   # Remove x-axis ticks
+```
+
+---
+
+# Study Description
+
+- Two projects devised, one inside the frontier, the other outside.
+
+- Participants (N = 758 strategic consultants) randomised to one of the two projects.
+
+- Projects contained 18 sequential tasks of four kinds (creative, analytical, writing, persuasiveness)
+
+- Participants further randomised to either "ChatGPT Only" or "ChatGPT + Overview"
+
+- First all participants complete a baseline project without ChatGPT.
+
+- Inside/Outside groups complete respective projects.
+
+- Speed and quality of work compared between groups against baseline levels. 
+
+---
+
+# Results
+
+```{r echo = F}
+data.frame(
+  Metric = c("Speed", "Quality", "Speed", "Quality"),
+  "Inside Frontier" = c("28%", "38%", "23%", "43%"),
+  "Outside Frontier" = c("18%", "-13%", "30%", "-24%")
+) %>%
+  kable() %>% kable_styling() %>%
+  kableExtra::pack_rows("ChatGPT Only", 1, 2) %>%
+  kableExtra::pack_rows("ChatGPT + Overview", 3, 4)
+  
+```
+
+---
+
+# The Jagged Frontier
+
+```{r echo = F, fig.width = 12, fig.height = 8}
+# Create data for the horizontal line
+expected_capability <- data.frame(y = 5, label = "Expected AI capability")
+
+# Create data for the points
+points_data <- data.frame(
+  x = c(1, 2, 3, 4, 5),  # Equally dispersed points on x-axis
+  y = c(7, 3, 5, 8, 4)   # Difficulty levels
+)
+
+# Define gradient
+gradient_bg <- rasterGrob(readPNG("images/gradient.png"), width = unit(1, "npc"), height = unit(1, "npc"))
+
+# Create the plot
+ggplot() +
+  
+  # Add points
+  annotation_custom(gradient_bg, -Inf, Inf, -Inf, Inf) +
+  geom_point(data = points_data, aes(x = x, y = y), size = 7) +
+  # Add labels and customize axes
+  labs(y = "Perceived Task Difficulty",
+       color = "Legend") +
+  scale_y_continuous(limits = c(0, 10)) +
+  theme_classic() +
+  scale_color_gradient(low = "purple", high = "yellow", name = "Position",
+                     labels = c("Inside Frontier", "Outside Frontier")) +
+  guides(color = guide_legend(override.aes = list(size = 6))) +
+  theme(axis.title.x = element_blank(),   # Remove x-axis label
+        axis.text.x = element_blank(),    # Remove x-axis text
+        axis.ticks.x = element_blank(),
+        text=element_text(size=21))  # Remove x-axis ticks
+
+
+
+
+```
+
+---
+
+# Discussion Points
+
+--
+
+- How do we know where the frontier is?
+
+--
+
+- How do we assess the quality of the output? Does this depend on the type of output?
+
+--
+
+---
 
 # Can we afford to ignore people?
 
-- Is AI always correct?
-
-- When AI is incorrect, is it any less 'confident' in its responses?
-
 - Paper examining AI attempts to answer biostatistical questions: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10646144/
+
+--
 
 - The study tested ChatGPT's responses to 10 questions with known answers. 
 
