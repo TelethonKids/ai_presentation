@@ -319,12 +319,6 @@ knitr::include_graphics("images/scandal.jpg")
 
 ---
 
-# More powerful than you think
-
-<iframe width="100%" height="80%" src="https://www.youtube.com/embed/Sq1QZB5baNw?si=jj79UB4VXV7dkwO9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
----
-
 # Anonymizer app - V1
 
 The app we saw earlier was made without a single character of code being written by a human.
@@ -457,87 +451,148 @@ background-size: cover
 
 + **Types of decisions:**
   + Which model to run?
-  + How should data be transformed?
-  + How to account for model complexities (e.g., complex correlation nesting)?
-  + How can output be interpreted? How could this be visualised?
-  
+  + What format should data be in? What transformations are necessary?
+  + How can modelling complexities be handled?
+  + How can output be interpreted? 
+  + How can I best visualise the output?
+
+--
+
+- How specific must prompts before a model can be output and coefficients interpreted?
+
 ---
 
 # Example
 
-+ Consider simulated data from the [UCLA Office of Advanced Research Computing](https://stats.idre.ucla.edu/stat/data/hdp.csv).
-+ Cohort of lung cancer patients.
-+ We want to explore how patient- and physician-level factors relate to lung cancer remission following treatment.
+Consider simulated data from the [UCLA Office of Advanced Research Computing](https://stats.idre.ucla.edu/stat/data/hdp.csv).
 
--- 
+- Simulated cohort of lung cancer patients.
 
-+ How specific/informed must prompts be to make appropriate decisions?
+--
+
+Research question: 
+
+- How could patient- and physician-level factors relate to lung cancer remission following treatment?
+
 
 ---
 
 ## Data
 
-```{r}
+- **Outcome**
+  - `remission` (0/1)
+- **Patient-level variables**
+  - IL6 levels
+  - CRP levels
+  - Length of hospital stay
+  - Family histogry
+  - Cancer stage
+- **Physician-level variables**
+  - Physician experience
+  - Physician ID
+  - Hospital ID
+  
+---
+
+### Categorical Outcomes
+
+```{r echo = F}
+library(gtsummary)
 hpd <- read.csv(file = "hdp.csv")
-```
 
-+ Some visualisations?
-
---
-
-+ **Variables**
-  + Outcome:
-    + `remission`
-  + Patient-level:
-    + `IL6`
-    + `CRP`
-    + `LengthofStay`
-    + `FamilyHx`
-    + `CancerStage`
-  + Physician-level
-    + `Experience`
-    + `DID`
-    + `HID`
-
----
-
-## Preliminary Exploration
-
-```{r echo = T}
 hpd %>%
-  group_by(remission) %>%
-  summarise(n = n())
+  select(remission,
+         FamilyHx, CancerStage) %>%
+  tbl_summary(by = remission) %>%
+  italicize_labels() %>%
+  modify_spanning_header(all_stat_cols() ~ "**Remission (N = {N})**")
 ```
 
 ---
 
-## Preliminary Exploration
+### Continuous Outcomes
 
-```{r echo=FALSE, out.width = '100%', fig.align='center'}
-knitr::include_graphics("images/hpd_vars.png")
+```{r echo=FALSE, out.width = '70%', fig.align='center'}
+hpd %>%
+  select(remission, Age, IL6, CRP, LengthofStay) %>%
+  tbl_summary(by = remission) %>%
+  italicize_labels() %>%
+  modify_spanning_header(all_stat_cols() ~ "**Remission (N = {N})**")
+
+#knitr::include_graphics("images/hpd_vars.png")
 ```
 
 ---
 
-## Pre-Modelling Analysis
+## Modelling
+
+```{r echo=FALSE, out.width = '70%', fig.align='center'}
+knitr::include_graphics("images/log_reg_1.png")
+```
 
 ---
 
-## Data QC & Variable Transformation
+### Model 1
+
+```{r echo=FALSE, out.width = '70%', fig.align='center'}
+knitr::include_graphics("images/log_res_2.png")
+```
 
 ---
 
-## Modelling Suggestions
+### Model 2
+
+```{r echo=FALSE, out.width = '70%', fig.align='center'}
+knitr::include_graphics("images/log_res_3.png")
+```
 
 ---
 
 ## Interpretation
 
+```{r echo=FALSE, out.width = '50%', fig.align='center'}
+knitr::include_graphics("images/log_reg_6.png")
+```
+
+---
+
+## Interpretation: Odds Ratio
+
+```{r echo=FALSE, out.width = '60%', fig.align='center'}
+knitr::include_graphics("images/log_reg_5.png")
+```
+
+---
+
+## Diagnostics
+
+```{r echo=FALSE, out.width = '70%', fig.align='center'}
+knitr::include_graphics("images/hpd_vars.png")
+```
+
+---
+
+```{r echo=FALSE, out.width = '70%', fig.align='center'}
+knitr::include_graphics("images/log_reg_7.png")
+```
+
 ---
 
 ## Comments
 
-+ If I am new to things, how can I be sure this is correct? By knowig how to verify this, I should know what to do anyway
+- Answers appear **informed and accurate**.
+  - Code successfully runs
+  - Specification seems appropriate
+  - Capable of identifying **variable transformations**
+
+--
+
+- Prompts, at face value, rely minimally on jargon.
+
+--
+
+- How can we **be confident** in this specification, without being an expert?
+- Are we asking the **correct questions**?
 
 ---
 
