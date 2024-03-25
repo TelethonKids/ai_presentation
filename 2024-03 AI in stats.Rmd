@@ -538,29 +538,34 @@ knitr::include_graphics("images/hpd_vars.png")
 
 - 
 
+---
+
 # The Jagged Frontier
 
-```{r echo = F}
+```{r echo = F, fig.width = 12, fig.height = 8, warning = F, message = F}
 # Create data for the horizontal line
 expected_capability <- data.frame(y = 5, label = "Expected AI capability")
 
 # Create the plot
 ggplot() +
   # Add horizontal line
-  geom_hline(data = expected_capability, aes(yintercept = y, color = label), linetype = "dashed") +
+  geom_hline(data = expected_capability, aes(yintercept = y, color = label), linetype = "dashed", size = 2) +
   # Add labels and customize axes
   labs(y = "Perceived Task Difficulty",
        color = "Legend") +
   scale_y_continuous(limits = c(0, 10)) +
-  theme_classic()
+  theme_classic() + 
   theme(axis.title.x = element_blank(),   # Remove x-axis label
         axis.text.x = element_blank(),    # Remove x-axis text
-        axis.ticks.x = element_blank())   # Remove x-axis ticks
+        axis.ticks.x = element_blank(),
+        text=element_text(size=21))   # Remove x-axis ticks
 ```
+
+---
 
 # The Jagged Frontier
 
-```{r echo = F}
+```{r echo = F, fig.width = 12, fig.height = 8}
 # Create data for the horizontal line
 expected_capability <- data.frame(y = 5, label = "Expected AI capability")
 
@@ -576,21 +581,25 @@ my_colors <- c("Expected AI capability" = "red", "Zigzag Line" = "blue", "Points
 # Create the plot
 ggplot() +
   # Add horizontal line
-  geom_hline(data = expected_capability, aes(yintercept = y, color = label), linetype = "dashed") +
+  geom_hline(data = expected_capability, aes(yintercept = y, color = label), linetype = "dashed", size = 2) +
   # Add points
-  geom_point(data = points_data, aes(x = x, y = y)) +
+  geom_point(data = points_data, aes(x = x, y = y), size = 7) +
   # Add labels and customize axes
-  labs(y = "Perceived Task Difficulty") +
+  labs(y = "Perceived Task Difficulty",
+       color = "Legend") +
   scale_y_continuous(limits = c(0, 10)) +
-  theme_classic()
+  theme_classic() +
   theme(axis.title.x = element_blank(),   # Remove x-axis label
         axis.text.x = element_blank(),    # Remove x-axis text
-        axis.ticks.x = element_blank())   # Remove x-axis ticks
+        axis.ticks.x = element_blank(),
+        text=element_text(size=21))  # Remove x-axis ticks
 ```
+
+---
 
 # The Jagged Frontier
 
-```{r}
+```{r echo = F, fig.width = 12, fig.height = 8}
 expected_capability <- data.frame(y = 5, label = "Expected AI capability")
 
 # Create data for the points
@@ -612,21 +621,23 @@ my_colors <- c("Expected AI capability" = "red", "Actual AI Capability" = "blue"
 # Create the plot
 ggplot() +
   # Add horizontal line
-  geom_hline(data = expected_capability, aes(yintercept = y, color = label), linetype = "dashed") +
+  geom_hline(data = expected_capability, aes(yintercept = y, color = label), linetype = "dashed", size = 2) +
   # Add points
-  geom_point(data = points_data, aes(x = x, y = y)) +
+  geom_point(data = points_data, aes(x = x, y = y), size = 7) +
   # Add zigzag lines
-  geom_path(data = zigzag_points, aes(x = x, y = y, color = "Actual AI Capability")) +
+  geom_path(data = zigzag_points, aes(x = x, y = y, color = "Actual AI Capability"), size = 2) +
   # Add labels and customize axes
-  labs(y = "Perceived Task Difficulty") +
+  labs(y = "Perceived Task Difficulty",
+       color = "Legend") +
   scale_y_continuous(limits = c(0, 10)) +
   theme_classic() +
   theme(axis.title.x = element_blank(),   # Remove x-axis label
         axis.text.x = element_blank(),    # Remove x-axis text
-        axis.ticks.x = element_blank())   # Remove x-axis ticks
+        axis.ticks.x = element_blank(),
+        text=element_text(size=21))   # Remove x-axis ticks
 ```
 
-
+---
 
 
 # Can we afford to ignore people?
