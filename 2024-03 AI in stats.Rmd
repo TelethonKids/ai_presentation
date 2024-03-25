@@ -16,6 +16,15 @@ output:
       countIncrementalSlides: false
 ---
 
+<style>
+.bottom-align-image img {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+</style>
+
 ```{r setup, include=FALSE}
 # ***** README *****
 # Before knitting, make sure you have done the following installed
@@ -106,19 +115,11 @@ knitr::include_graphics("images/weather_p6.jpeg")
 
 ---
 
-# It's getting hot in here?
-
-```{r echo=FALSE, out.width = '80%', fig.align='center'}
-knitr::include_graphics("images/weather_p7.jpeg")
-```
-
----
-
 # Who are we?
 
-The Biometrics Team (Matt, Bethy, Wes, Zac)
+The **Biometrics Team** (Matt, Bethy, Wes, Zac)
 
-- The institute's Statistical Team
+- The Institute's Statistics Team
 - Providing statistical support via consultation
   - Study design guidance - protocol/grant/ethics applications support 
   - Analysis capacity - independent/outsourced analysis
@@ -136,7 +137,7 @@ Hacky Hour
 - Wednesdays - 10am to 11am in the Manda
 - Stop by, with any questions (coding, statistical, life advice)
 
-```{r echo=FALSE, out.width = '50%'}
+```{r echo=FALSE, out.width = '50%', fig.align='center'}
 knitr::include_graphics("images/bm_hacky.png")
 ```
   
@@ -147,10 +148,11 @@ knitr::include_graphics("images/bm_hacky.png")
 Viva Engage
 
 - Ongoing dialogue around statistics in academic research
-- Knowledge base of resources
+- Repository for useful analytical resources
+- **ALL are welcome** to post!
 - General things of interest related to analysis
 
-```{r echo=FALSE, out.width = '65%'}
+```{r echo=FALSE, out.width = '65%', fig.align='center'}
 knitr::include_graphics("images/bm_viva_engage.png")
 ```
 
@@ -158,55 +160,59 @@ knitr::include_graphics("images/bm_viva_engage.png")
 
 # Session Overview
 
----
-
-# Session Overview
-
 This is an informal session, we do not have all the answers, please asks questions/add your perspective whenever relevant.
+
+--
 
 *Topics:*
 
 1. Risks and data governance
 
-2. AI (LLMs) may be more powerful than you think...
+2. More powerful than you think...
 
-3. Prompt engineering
+3. Modelling
 
-4. Their are efficiencies to be gained, keep up or be left behind (?)
+4. Use and trust levels
 
-5. Trust, and the roll of expertise in the process
+5. AI in other aspects of your research 
 
-6. AI in other aspects of your research 
-
-7. Discussion
+6. Discussion
 
 ---
 
 # Some language
 
-LLM is a term you will may be familiar with. Large Language Model, this refers to a model trained on a large value of text (generally from a variety of sources) for the **purpose of generating further text**, typically in response to prompts. 
+LLM is a term you will may be familiar with. Large Language Model. 
 
-Or, AI Chat Bot. 
+This refers to a model trained on a large value of text (generally from a variety of sources) for the **purpose of _generating further text_**, typically in response to user prompts. 
+
+Also commonly referred to as AI, or sometimes chat bots. 
 
 --
 
-There are many of these out there, OpenAI's ChatGPT may be the most well known. 
+There are many implementations of these out there (being constantly updated), with more being released daily. OpenAI's ChatGPT may be the most well known. 
 
 We'll use chat bot/AI/LLM interchangeably.
 
+<div class="bottom-align-image">
+```{r echo=FALSE, out.width = '65%', fig.align='center'}
+knitr::include_graphics("images/other_ai.png")
+```
+</div>
+
 ---
 
-# But first, a show of hands
+# A show of hands
 
 Who here has...
 
 --
 
-- Already tried using a AI to assist in their coding?
+- Already tried using AI for anything? (e.g. drawing a picture, writing text)
 
 --
 
-- Who has thought about it, but didn't know where to start?
+- Tried using AI specifically for generating analysis code?
 
 --
 
@@ -214,7 +220,7 @@ Who here has...
 
 --
 
-- Who has generated a graph using AI?
+- Who has thought about it, but didn't know where to start?
 
 --
 
@@ -237,21 +243,26 @@ background-size: cover
 
 Telethon Kids has an 'AI Policy' in draft - not out for review yet.
 
+
+
 **DO NOT** upload your data to an AI bot:
 - this is an ethics, governance, data governance breach
-- unless the AI resides solely on the server specific and approved within your study documentation
 
+- unless the AI resides solely on the server that your data were approved to reside on (within your study documentation)
+
+- policy catching up to technology (not just at the Institute)
 
 ---
 
 # Data anonymiser app
 
-Available now on a TKI server, is an app that will: 
+Available now on a TKI (Perth) server, is an app that will: 
 
 --
 
 - accept your dataset (.csv/.xlsx), and
-- return a dataset with anonymised column header
+
+- return a 'similar' but random dataset, with anonymised column headers.
 
 --
 
@@ -259,19 +270,18 @@ The returned dataset (.csv) has:
 
 --
 
-- obscured column headers,
 - data that broadly reflects your original data
   - continuous (and date) data within a similar range
   - the same number of categories for categorical data (assuming <15)
-  - obsecured data for other character variables
+  - obscured data for other character variables
+- obscured column headers
 
 --
 
 Your data are destroyed when the app is closed. 
 
 --
-
-Soon to be added - An R function that will also do this.
+_Soon to be added - An R function that will also do this._
 
 ---
 
@@ -327,7 +337,7 @@ The app we saw earlier was made without a single character of code being written
 
 # Anonymizer app - V1
 
-```{r echo=FALSE, out.width = '60%'}
+```{r echo=FALSE, out.width = '60%', fig.align='center'}
 knitr::include_graphics("images/app_as_zip.png")
 ```
 
@@ -335,7 +345,7 @@ knitr::include_graphics("images/app_as_zip.png")
 
 # Anonymizer app - V1
 
-```{r echo=FALSE, out.height = '20%'}
+```{r echo=FALSE, out.height = '15%', fig.align='center'}
 knitr::include_graphics("images/app_17_iterations.png")
 ```
 
@@ -345,7 +355,7 @@ knitr::include_graphics("images/app_17_iterations.png")
 
 The data we anonymised in the app was assembled by ChatGPT.
 
-```{r echo=FALSE, out.height = '80%'}
+```{r echo=FALSE, out.height = '60%', fig.align='center'}
 knitr::include_graphics("images/synth_req.png")
 ```
   
@@ -355,7 +365,7 @@ knitr::include_graphics("images/synth_req.png")
 
 Did you spot?
 
-```{r echo=FALSE, out.height = '20%'}
+```{r echo=FALSE, out.height = '20%', fig.align='center'}
 knitr::include_graphics("images/synth_req_2.png")
 ```
   
@@ -372,7 +382,12 @@ dat %>%
   theme_clean() +
   labs(title = "Plot of IQ against Height")
 ```
-  
+
+<div class="bottom-align-image">
+```{r echo=FALSE, out.width = '80%', fig.align='center'}
+knitr::include_graphics("images/synth_req_2_1.png")
+```
+</div>  
 ---
 
 # Anonymizer app - Dummy dataset
@@ -390,7 +405,12 @@ dat %>%
   theme_clean() +
   labs(title = "Plot of IQ by Household Income")
 ```
-  
+
+<div class="bottom-align-image">
+```{r echo=FALSE, out.width = '80%', fig.align='center'}
+knitr::include_graphics("images/synth_req_2_2.png")
+```
+</div>  
 ---
 
 # Anonymizer app - Online graph drawer
@@ -416,6 +436,16 @@ knitr::include_graphics("images/synth_plot_3.png")
 ```
     
 ---
+
+class: inverse, top, center
+
+background-image: url("images/promo_y.png")
+background-size: cover
+
+# Modelling
+
+---
+
 
 # Guiding Model Specification
 
@@ -510,6 +540,17 @@ knitr::include_graphics("images/hpd_vars.png")
 + If I am new to things, how can I be sure this is correct? By knowig how to verify this, I should know what to do anyway
 
 ---
+
+class: inverse, top, center
+
+background-image: url("images/promo_x.png")
+background-size: cover
+
+# Use and trust levels
+
+---
+
+
 
 # Underutilization and Overreliance
 

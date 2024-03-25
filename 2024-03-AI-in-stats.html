@@ -33,6 +33,15 @@ class: center, middle, inverse, title-slide
 ---
 
 
+&lt;style&gt;
+.bottom-align-image img {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+&lt;/style&gt;
+
 
 
 class: inverse, top, center
@@ -88,17 +97,11 @@ background-size: cover
 
 ---
 
-# It's getting hot in here?
-
-&lt;img src="images/weather_p7.jpeg" width="80%" style="display: block; margin: auto;" /&gt;
-
----
-
 # Who are we?
 
-The Biometrics Team (Matt, Bethy, Wes, Zac)
+The **Biometrics Team** (Matt, Bethy, Wes, Zac)
 
-- The institute's Statistical Team
+- The Institute's Statistics Team
 - Providing statistical support via consultation
   - Study design guidance - protocol/grant/ethics applications support 
   - Analysis capacity - independent/outsourced analysis
@@ -116,7 +119,7 @@ Hacky Hour
 - Wednesdays - 10am to 11am in the Manda
 - Stop by, with any questions (coding, statistical, life advice)
 
-&lt;img src="images/bm_hacky.png" width="50%" /&gt;
+&lt;img src="images/bm_hacky.png" width="50%" style="display: block; margin: auto;" /&gt;
   
 ---
 
@@ -125,14 +128,11 @@ Hacky Hour
 Viva Engage
 
 - Ongoing dialogue around statistics in academic research
-- Knowledge base of resources
+- Repository for useful analytical resources
+- **ALL are welcome** to post!
 - General things of interest related to analysis
 
-&lt;img src="images/bm_viva_engage.png" width="65%" /&gt;
-
----
-
-# Session Overview
+&lt;img src="images/bm_viva_engage.png" width="65%" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -140,49 +140,55 @@ Viva Engage
 
 This is an informal session, we do not have all the answers, please asks questions/add your perspective whenever relevant.
 
+--
+
 *Topics:*
 
 1. Risks and data governance
 
-2. AI (LLMs) may be more powerful than you think...
+2. More powerful than you think...
 
-3. Prompt engineering
+3. Modelling
 
-4. Their are efficiencies to be gained, keep up or be left behind (?)
+4. Use and trust levels
 
-5. Trust, and the roll of expertise in the process
+5. AI in other aspects of your research 
 
-6. AI in other aspects of your research 
-
-7. Discussion
+6. Discussion
 
 ---
 
 # Some language
 
-LLM is a term you will may be familiar with. Large Language Model, this refers to a model trained on a large value of text (generally from a variety of sources) for the **purpose of generating further text**, typically in response to prompts. 
+LLM is a term you will may be familiar with. Large Language Model. 
 
-Or, AI Chat Bot. 
+This refers to a model trained on a large value of text (generally from a variety of sources) for the **purpose of _generating further text_**, typically in response to user prompts. 
+
+Also commonly referred to as AI, or sometimes chat bots. 
 
 --
 
-There are many of these out there, OpenAI's ChatGPT may be the most well known. 
+There are many implementations of these out there (being constantly updated), with more being released daily. OpenAI's ChatGPT may be the most well known. 
 
 We'll use chat bot/AI/LLM interchangeably.
 
+&lt;div class="bottom-align-image"&gt;
+&lt;img src="images/other_ai.png" width="65%" style="display: block; margin: auto;" /&gt;
+&lt;/div&gt;
+
 ---
 
-# But first, a show of hands
+# A show of hands
 
 Who here has...
 
 --
 
-- Already tried using a AI to assist in their coding?
+- Already tried using AI for anything? (e.g. drawing a picture, writing text)
 
 --
 
-- Who has thought about it, but didn't know where to start?
+- Tried using AI specifically for generating analysis code?
 
 --
 
@@ -190,7 +196,7 @@ Who here has...
 
 --
 
-- Who has generated a graph using AI?
+- Who has thought about it, but didn't know where to start?
 
 --
 
@@ -213,21 +219,26 @@ background-size: cover
 
 Telethon Kids has an 'AI Policy' in draft - not out for review yet.
 
+
+
 **DO NOT** upload your data to an AI bot:
 - this is an ethics, governance, data governance breach
-- unless the AI resides solely on the server specific and approved within your study documentation
 
+- unless the AI resides solely on the server that your data were approved to reside on (within your study documentation)
+
+- policy catching up to technology (not just at the Institute)
 
 ---
 
 # Data anonymiser app
 
-Available now on a TKI server, is an app that will: 
+Available now on a TKI (Perth) server, is an app that will: 
 
 --
 
 - accept your dataset (.csv/.xlsx), and
-- return a dataset with anonymised column header
+
+- return a 'similar' but random dataset, with anonymised column headers.
 
 --
 
@@ -235,19 +246,18 @@ The returned dataset (.csv) has:
 
 --
 
-- obscured column headers,
 - data that broadly reflects your original data
   - continuous (and date) data within a similar range
   - the same number of categories for categorical data (assuming &lt;15)
-  - obsecured data for other character variables
+  - obscured data for other character variables
+- obscured column headers
 
 --
 
 Your data are destroyed when the app is closed. 
 
 --
-
-Soon to be added - An R function that will also do this.
+_Soon to be added - An R function that will also do this._
 
 ---
 
@@ -301,13 +311,13 @@ The app we saw earlier was made without a single character of code being written
 
 # Anonymizer app - V1
 
-&lt;img src="images/app_as_zip.png" width="60%" /&gt;
+&lt;img src="images/app_as_zip.png" width="60%" style="display: block; margin: auto;" /&gt;
 
 ---
 
 # Anonymizer app - V1
 
-&lt;img src="images/app_17_iterations.png" width="680" height="20%" /&gt;
+&lt;img src="images/app_17_iterations.png" width="680" height="15%" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -315,7 +325,7 @@ The app we saw earlier was made without a single character of code being written
 
 The data we anonymised in the app was assembled by ChatGPT.
 
-&lt;img src="images/synth_req.png" width="1571" height="80%" /&gt;
+&lt;img src="images/synth_req.png" width="1749" height="60%" style="display: block; margin: auto;" /&gt;
   
 ---
 
@@ -323,20 +333,26 @@ The data we anonymised in the app was assembled by ChatGPT.
 
 Did you spot?
 
-&lt;img src="images/synth_req_2.png" width="1571" height="20%" /&gt;
+&lt;img src="images/synth_req_2.png" width="1571" height="20%" style="display: block; margin: auto;" /&gt;
   
 ---
 
 # Anonymizer app - Dummy dataset
 
 &lt;img src="2024-03-AI-in-stats_files/figure-html/unnamed-chunk-16-1.svg" style="display: block; margin: auto;" /&gt;
-  
+
+&lt;div class="bottom-align-image"&gt;
+&lt;img src="images/synth_req_2_1.png" width="80%" style="display: block; margin: auto;" /&gt;
+&lt;/div&gt;  
 ---
 
 # Anonymizer app - Dummy dataset
 
-&lt;img src="2024-03-AI-in-stats_files/figure-html/unnamed-chunk-17-1.svg" style="display: block; margin: auto;" /&gt;
-  
+&lt;img src="2024-03-AI-in-stats_files/figure-html/unnamed-chunk-18-1.svg" style="display: block; margin: auto;" /&gt;
+
+&lt;div class="bottom-align-image"&gt;
+&lt;img src="images/synth_req_2_2.png" width="80%" style="display: block; margin: auto;" /&gt;
+&lt;/div&gt;  
 ---
 
 # Anonymizer app - Online graph drawer
@@ -356,6 +372,16 @@ Did you spot?
 &lt;img src="images/synth_plot_3.png" width="1661" height="100%" /&gt;
     
 ---
+
+class: inverse, top, center
+
+background-image: url("images/promo_y.png")
+background-size: cover
+
+# Modelling
+
+---
+
 
 # Guiding Model Specification
 
@@ -459,6 +485,17 @@ hpd %&gt;%
 
 ---
 
+class: inverse, top, center
+
+background-image: url("images/promo_x.png")
+background-size: cover
+
+# Use and trust levels
+
+---
+
+
+
 # Underutilization and Overreliance
 
 --
@@ -492,18 +529,6 @@ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4573321
 
 # The Jagged Frontier
 
-![](2024-03-AI-in-stats_files/figure-html/unnamed-chunk-25-1.png)&lt;!-- --&gt;
-
----
-
-# The Jagged Frontier
-
-![](2024-03-AI-in-stats_files/figure-html/unnamed-chunk-26-1.png)&lt;!-- --&gt;
-
----
-
-# The Jagged Frontier
-
 ![](2024-03-AI-in-stats_files/figure-html/unnamed-chunk-27-1.png)&lt;!-- --&gt;
 
 ---
@@ -511,6 +536,18 @@ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4573321
 # The Jagged Frontier
 
 ![](2024-03-AI-in-stats_files/figure-html/unnamed-chunk-28-1.png)&lt;!-- --&gt;
+
+---
+
+# The Jagged Frontier
+
+![](2024-03-AI-in-stats_files/figure-html/unnamed-chunk-29-1.png)&lt;!-- --&gt;
+
+---
+
+# The Jagged Frontier
+
+![](2024-03-AI-in-stats_files/figure-html/unnamed-chunk-30-1.png)&lt;!-- --&gt;
 
 ---
 
@@ -534,7 +571,7 @@ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4573321
 
 # Results
 
-&lt;table class="table" style="margin-left: auto; margin-right: auto;"&gt;
+&lt;table class="table" style="color: black; margin-left: auto; margin-right: auto;"&gt;
  &lt;thead&gt;
   &lt;tr&gt;
    &lt;th style="text-align:left;"&gt; Metric &lt;/th&gt;
@@ -572,7 +609,7 @@ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4573321
 
 # The Jagged, Hazy Frontier
 
-![](2024-03-AI-in-stats_files/figure-html/unnamed-chunk-30-1.png)&lt;!-- --&gt;
+![](2024-03-AI-in-stats_files/figure-html/unnamed-chunk-32-1.png)&lt;!-- --&gt;
 
 ---
 
@@ -604,7 +641,7 @@ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4573321
 
 # Results of Paper
 
-![](2024-03-AI-in-stats_files/figure-html/unnamed-chunk-31-1.png)&lt;!-- --&gt;
+![](2024-03-AI-in-stats_files/figure-html/unnamed-chunk-33-1.png)&lt;!-- --&gt;
 
 ---
 
@@ -632,7 +669,7 @@ Suppose the probability of surviving from a particular disease is 0.9 and there 
 
 --
 
-![](2024-03-AI-in-stats_files/figure-html/unnamed-chunk-32-1.png)&lt;!-- --&gt;
+![](2024-03-AI-in-stats_files/figure-html/unnamed-chunk-34-1.png)&lt;!-- --&gt;
 
 ---
 
@@ -650,7 +687,7 @@ Suppose the probability of surviving from a particular disease is 0.9 and there 
 
 # Binomial Distribution
 
-![](2024-03-AI-in-stats_files/figure-html/unnamed-chunk-35-1.png)&lt;!-- --&gt;
+![](2024-03-AI-in-stats_files/figure-html/unnamed-chunk-37-1.png)&lt;!-- --&gt;
 
 
 ---
@@ -698,11 +735,18 @@ prob &lt;- 0.9 # Probability of *surviving*
 
 &lt;img src="images/reproduced_q4.PNG" width="100%" style="display: block; margin: auto;" /&gt;
 
+# TODO - Final screenshots
 
+---
+
+# TODO - Discussion Points
+
+---
 class: inverse, top, center
 
 background-image: url("images/promo_AI_other.png")
 background-size: cover
+
 
 # AI in other aspects of research
 
