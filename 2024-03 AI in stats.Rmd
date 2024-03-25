@@ -534,6 +534,101 @@ knitr::include_graphics("images/hpd_vars.png")
 
 ---
 
+# Can we ignore AI?
+
+- 
+
+# The Jagged Frontier
+
+```{r echo = F}
+# Create data for the horizontal line
+expected_capability <- data.frame(y = 5, label = "Expected AI capability")
+
+# Create the plot
+ggplot() +
+  # Add horizontal line
+  geom_hline(data = expected_capability, aes(yintercept = y, color = label), linetype = "dashed") +
+  # Add labels and customize axes
+  labs(y = "Perceived Task Difficulty",
+       color = "Legend") +
+  scale_y_continuous(limits = c(0, 10)) +
+  theme_classic()
+  theme(axis.title.x = element_blank(),   # Remove x-axis label
+        axis.text.x = element_blank(),    # Remove x-axis text
+        axis.ticks.x = element_blank())   # Remove x-axis ticks
+```
+
+# The Jagged Frontier
+
+```{r echo = F}
+# Create data for the horizontal line
+expected_capability <- data.frame(y = 5, label = "Expected AI capability")
+
+# Create data for the points
+points_data <- data.frame(
+  x = c(1, 2, 3, 4, 5),  # Equally dispersed points on x-axis
+  y = c(7, 3, 5, 8, 4)   # Difficulty levels
+)
+
+# Define color palette
+my_colors <- c("Expected AI capability" = "red", "Zigzag Line" = "blue", "Points" = "black")
+
+# Create the plot
+ggplot() +
+  # Add horizontal line
+  geom_hline(data = expected_capability, aes(yintercept = y, color = label), linetype = "dashed") +
+  # Add points
+  geom_point(data = points_data, aes(x = x, y = y)) +
+  # Add labels and customize axes
+  labs(y = "Perceived Task Difficulty") +
+  scale_y_continuous(limits = c(0, 10)) +
+  theme_classic()
+  theme(axis.title.x = element_blank(),   # Remove x-axis label
+        axis.text.x = element_blank(),    # Remove x-axis text
+        axis.ticks.x = element_blank())   # Remove x-axis ticks
+```
+
+# The Jagged Frontier
+
+```{r}
+expected_capability <- data.frame(y = 5, label = "Expected AI capability")
+
+# Create data for the points
+points_data <- data.frame(
+  x = c(1, 2, 3, 4, 5),  # Equally dispersed points on x-axis
+  y = c(7, 3, 5, 8, 4)   # Difficulty levels
+)
+
+# Define turning points for zigzag
+zigzag_points <- data.frame(
+  x = c(1, 2, 3, 4, 5),
+  y = c(6, 1, 7, 9, 4),
+  label = rep("Actual AI capability", 5)
+)
+
+# Define color palette
+my_colors <- c("Expected AI capability" = "red", "Actual AI Capability" = "blue")
+
+# Create the plot
+ggplot() +
+  # Add horizontal line
+  geom_hline(data = expected_capability, aes(yintercept = y, color = label), linetype = "dashed") +
+  # Add points
+  geom_point(data = points_data, aes(x = x, y = y)) +
+  # Add zigzag lines
+  geom_path(data = zigzag_points, aes(x = x, y = y, color = "Actual AI Capability")) +
+  # Add labels and customize axes
+  labs(y = "Perceived Task Difficulty") +
+  scale_y_continuous(limits = c(0, 10)) +
+  theme_classic() +
+  theme(axis.title.x = element_blank(),   # Remove x-axis label
+        axis.text.x = element_blank(),    # Remove x-axis text
+        axis.ticks.x = element_blank())   # Remove x-axis ticks
+```
+
+
+
+
 # Can we afford to ignore people?
 
 - Is AI always correct?
