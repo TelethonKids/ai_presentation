@@ -464,16 +464,20 @@ background-size: cover
 
 # Example
 
-Consider simulated data from the [UCLA Office of Advanced Research Computing](https://stats.idre.ucla.edu/stat/data/hdp.csv).
+Consider simulated lung cancer data from the [UCLA Office of Advanced Research Computing](https://stats.idre.ucla.edu/stat/data/hdp.csv).
 
-- Simulated cohort of lung cancer patients.
+- Cohort of 8525.
+- Small set of independent variables.
 
 --
 
-Research question: 
+<br>
+
+
+**We want to explore:**
 
 - How could patient- and physician-level factors relate to lung cancer remission following treatment?
-
+- How can ChatGPT be prompted to lead us down a modelling pathway?
 
 ---
 
@@ -491,42 +495,33 @@ Research question:
   - Physician experience
   - Physician ID
   - Hospital ID
-  
+
+```{r echo=FALSE, out.height = '120%'}
+knitr::include_graphics("images/hpd_head.png")
+```
+
 ---
 
-### Categorical Outcomes
+### Data Summary
 
-```{r echo = F}
+```{r echo = F, warning = F, message = F}
 library(gtsummary)
 hpd <- read.csv(file = "hdp.csv")
 
 hpd %>%
   select(remission,
-         FamilyHx, CancerStage) %>%
+         FamilyHx, CancerStage,
+         Age, IL6, CRP, LengthofStay) %>%
   tbl_summary(by = remission) %>%
   italicize_labels() %>%
   modify_spanning_header(all_stat_cols() ~ "**Remission (N = {N})**")
-```
-
----
-
-### Continuous Outcomes
-
-```{r echo=FALSE, out.width = '70%', fig.align='center'}
-hpd %>%
-  select(remission, Age, IL6, CRP, LengthofStay) %>%
-  tbl_summary(by = remission) %>%
-  italicize_labels() %>%
-  modify_spanning_header(all_stat_cols() ~ "**Remission (N = {N})**")
-
-#knitr::include_graphics("images/hpd_vars.png")
 ```
 
 ---
 
 ## Modelling
 
-```{r echo=FALSE, out.width = '70%', fig.align='center'}
+```{r echo=FALSE, out.width = '90%', fig.align='center'}
 knitr::include_graphics("images/log_reg_1.png")
 ```
 
@@ -548,6 +543,14 @@ knitr::include_graphics("images/log_res_3.png")
 
 ---
 
+### Output
+
+```{r echo=FALSE, out.width = '150%', fig.align='center'}
+knitr::include_graphics("images/log_reg_mod1_summ.png")
+```
+
+---
+
 ## Interpretation
 
 ```{r echo=FALSE, out.width = '50%', fig.align='center'}
@@ -564,7 +567,7 @@ knitr::include_graphics("images/log_reg_5.png")
 
 ---
 
-## Diagnostics
+## Model Diagnostics
 
 ```{r echo=FALSE, out.width = '70%', fig.align='center'}
 knitr::include_graphics("images/hpd_vars.png")
@@ -572,7 +575,7 @@ knitr::include_graphics("images/hpd_vars.png")
 
 ---
 
-```{r echo=FALSE, out.width = '70%', fig.align='center'}
+```{r echo=FALSE, out.width = '90%', fig.align='center'}
 knitr::include_graphics("images/log_reg_7.png")
 ```
 
@@ -592,7 +595,7 @@ knitr::include_graphics("images/log_reg_7.png")
 --
 
 - How can we **be confident** in this specification, without being an expert?
-- Are we asking the **correct questions**?
+- Are we asking the **right questions**?
 
 ---
 
