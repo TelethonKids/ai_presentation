@@ -640,7 +640,7 @@ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4573321
 
 # The Jagged Frontier
 
-```{r echo = F, fig.width = 12, fig.height = 8}
+```{r echo = F, fig.width = 12, fig.height = 8, warning = F, message = F}
 expected_capability <- data.frame(y = 5, label = "Expected AI capability")
 
 # Create data for the points
@@ -746,17 +746,17 @@ ggplot() +
 
 # Study Description
 
-- Two projects devised, one inside the frontier, the other outside.
+- Two projects devised, one inside the frontier, the other outside (for ChatGPT 4.0)
 
 - Participants (N = 758 strategic consultants) randomised to one of the two projects.
 
 - Projects contained 18 sequential tasks of four kinds (creative, analytical, writing, persuasiveness)
 
-- Participants further randomised to either "ChatGPT Only" or "ChatGPT + Overview"
+- Participants further randomised to either "ChatGPT" or "ChatGPT + Overview"
 
 ```{r echo = F}
 data.frame(
-  Metric = c("ChatGPT Only", "ChatGPT + Overview"),
+  Metric = c("ChatGPT", "ChatGPT + Overview"),
   "Inside Frontier" = c(189, 190),
   "Outside Frontier" = c(190, 189)
 ) %>%
@@ -785,9 +785,10 @@ data.frame(
 ) %>%
   select(-Outside.Frontier) %>%
   kable() %>% kable_styling(full_width = T) %>%
-  kableExtra::pack_rows("ChatGPT Only", 1, 2) %>%
+  kableExtra::pack_rows("ChatGPT", 1, 2) %>%
   kableExtra::pack_rows("ChatGPT + Overview", 3, 4)
 ```
+
 
 ---
 
@@ -800,104 +801,18 @@ data.frame(
   "Outside Frontier" = c("18%", "-13%", "30%", "-24%")
 ) %>%
   kable() %>% kable_styling(full_width = T) %>%
-  kableExtra::pack_rows("ChatGPT Only", 1, 2) %>%
+  kableExtra::pack_rows("ChatGPT", 1, 2) %>%
   kableExtra::pack_rows("ChatGPT + Overview", 3, 4)
   
 ```
 
----
+--
 
-# The Jagged Frontier
+So clearly we can't ignore the benefits of AI for tasks within the frontier!
 
-```{r echo = F, fig.width = 12, fig.height = 8, warning = F}
-expected_capability <- data.frame(y = 5, label = "Expected AI capability")
+--
 
-# Create data for the points
-points_data <- data.frame(
-  x = c(1, 2, 3, 4, 5),  # Equally dispersed points on x-axis
-  y = c(7, 3, 5, 8, 4)   # Difficulty levels
-)
-
-# Define turning points for zigzag
-zigzag_points <- data.frame(
-  x = c(1, 2, 3, 4, 5),
-  y = c(6, 1, 7, 9, 4),
-  label = rep("Actual AI capability", 5)
-)
-
-# Define color palette
-my_colors <- c("Expected AI capability" = "red", "Actual AI Capability" = "blue")
-
-# Create the plot
-ggplot() +
-  # Add horizontal line
-  geom_hline(data = expected_capability, aes(yintercept = y, color = label), linetype = "dashed", size = 2) +
-  # Add zigzag lines
-  geom_path(data = zigzag_points, aes(x = x, y = y, color = "Actual AI Capability"), size = 2) +
-  # Add ribbon above and below the zigzag line
-  geom_ribbon(data = zigzag_points, aes(x = x, ymin = y, ymax = 10, fill = "Outside Frontier"), alpha = 0.2) +
-  geom_ribbon(data = zigzag_points, aes(x = x, ymin = 0, ymax = y, fill = "Inside Frontier"), alpha = 0.2) +
-  # Add points
-  geom_point(data = points_data, aes(x = x, y = y), size = 7) +
-  # Add labels and customize axes
-  labs(y = "Perceived Task Difficulty",
-       color = "Legend",
-       fill = "") +
-  scale_y_continuous(limits = c(0, 10)) +
-  scale_fill_manual(values = c("Outside Frontier" = "yellow", "Inside Frontier" = "purple")) + # Define fill colors for ribbons
-  theme_classic() +
-  theme(axis.title.x = element_blank(),   # Remove x-axis label
-        axis.text.x = element_blank(),    # Remove x-axis text
-        axis.ticks.x = element_blank(),
-        text = element_text(size = 21))   # Remove x-axis ticks
-```
-
----
-
-# A Moving Jagged Frontier - ChatGPT 5.0?
-
-```{r echo = F, fig.width = 12, fig.height = 8}
-expected_capability <- data.frame(y = 5, label = "Expected AI capability")
-
-# Create data for the points
-points_data <- data.frame(
-  x = c(1, 2, 3, 4, 5),  # Equally dispersed points on x-axis
-  y = c(7, 3, 5, 8, 4)   # Difficulty levels
-)
-
-# Define turning points for zigzag
-zigzag_points <- data.frame(
-  x = c(1, 2, 3, 4, 5),
-  y = c(7, 2, 8, 10, 5),
-  label = rep("Actual AI capability", 5)
-)
-
-# Define color palette
-my_colors <- c("Expected AI capability" = "red", "Actual AI Capability" = "blue")
-
-# Create the plot
-ggplot() +
-  # Add horizontal line
-  geom_hline(data = expected_capability, aes(yintercept = y, color = label), linetype = "dashed", size = 2) +
-  # Add zigzag lines
-  geom_path(data = zigzag_points, aes(x = x, y = y, color = "Actual AI Capability"), size = 2) +
-  # Add ribbon above and below the zigzag line
-  geom_ribbon(data = zigzag_points, aes(x = x, ymin = y, ymax = 10, fill = "Outside Frontier"), alpha = 0.2) +
-  geom_ribbon(data = zigzag_points, aes(x = x, ymin = 0, ymax = y, fill = "Inside Frontier"), alpha = 0.2) +
-  # Add points
-  geom_point(data = points_data, aes(x = x, y = y), size = 7) +
-  # Add labels and customize axes
-  labs(y = "Perceived Task Difficulty",
-       color = "Legend",
-       fill = "") +
-  scale_y_continuous(limits = c(0, 10)) +
-  scale_fill_manual(values = c("Outside Frontier" = "yellow", "Inside Frontier" = "purple")) + # Define fill colors for ribbons
-  theme_classic() +
-  theme(axis.title.x = element_blank(),   # Remove x-axis label
-        axis.text.x = element_blank(),    # Remove x-axis text
-        axis.ticks.x = element_blank(),
-        text = element_text(size = 21))   # Remove x-axis ticks
-```
+...but how do we *know* what's inside the frontier?
 
 ---
 
@@ -930,10 +845,7 @@ ggplot() +
   scale_color_gradient(low = "purple", high = "yellow", name = "Position",
                      labels = c("Inside Frontier", "Outside Frontier")) +
   guides(color = guide_legend(override.aes = list(size = 6))) +
-  theme(axis.title.x = element_blank(),   # Remove x-axis label
-        axis.text.x = element_blank(),    # Remove x-axis text
-        axis.ticks.x = element_blank(),
-        text=element_text(size=21))  # Remove x-axis ticks
+  theme(text=element_text(size=21))  # Remove x-axis ticks
 ```
 
 ---
@@ -982,6 +894,94 @@ ggplot(data, aes(x = Rating, y = Question)) +
         axis.line = element_line(colour = "black"),
         text = element_text(size = 21)) +
   labs(x = NULL, y = NULL, title = "ChatGPT Performance at Biostatistics Tasks") # Customize labels and title
+```
+
+---
+
+# The Jagged Frontier
+
+```{r echo = F, fig.width = 12, fig.height = 8, warning = F}
+expected_capability <- data.frame(y = 5, label = "Expected AI capability")
+
+# Create data for the points
+points_data <- data.frame(
+  x = c(1, 2, 3, 4, 5),  # Equally dispersed points on x-axis
+  y = c(7, 3, 5, 8, 4)   # Difficulty levels
+)
+
+# Define turning points for zigzag
+zigzag_points <- data.frame(
+  x = c(1, 2, 3, 4, 5),
+  y = c(6, 1, 7, 9, 4),
+  label = rep("Actual AI capability", 5)
+)
+
+# Define color palette
+my_colors <- c("Expected AI capability" = "red", "Actual AI Capability" = "blue")
+
+# Create the plot
+ggplot() +
+  # Add horizontal line
+  geom_hline(data = expected_capability, aes(yintercept = y, color = label), linetype = "dashed", size = 2) +
+  # Add zigzag lines
+  geom_path(data = zigzag_points, aes(x = x, y = y, color = "Actual AI Capability"), size = 2) +
+  # Add ribbon above and below the zigzag line
+  geom_ribbon(data = zigzag_points, aes(x = x, ymin = y, ymax = 10, fill = "Outside Frontier"), alpha = 0.2) +
+  geom_ribbon(data = zigzag_points, aes(x = x, ymin = 0, ymax = y, fill = "Inside Frontier"), alpha = 0.2) +
+  # Add points
+  geom_point(data = points_data, aes(x = x, y = y), size = 7) +
+  # Add labels and customize axes
+  labs(y = "Perceived Task Difficulty",
+       color = "Legend",
+       fill = "") +
+  scale_y_continuous(limits = c(0, 10)) +
+  scale_fill_manual(values = c("Outside Frontier" = "yellow", "Inside Frontier" = "purple")) + # Define fill colors for ribbons
+  theme_classic() +
+  theme(text = element_text(size = 21))   # Remove x-axis ticks
+```
+
+---
+
+# A Moving Jagged Frontier - ChatGPT 5.0?
+
+```{r echo = F, fig.width = 12, fig.height = 8}
+expected_capability <- data.frame(y = 5, label = "Expected AI capability")
+
+# Create data for the points
+points_data <- data.frame(
+  x = c(1, 2, 3, 4, 5),  # Equally dispersed points on x-axis
+  y = c(7, 3, 5, 8, 4)   # Difficulty levels
+)
+
+# Define turning points for zigzag
+zigzag_points <- data.frame(
+  x = c(1, 2, 3, 4, 5),
+  y = c(7, 2, 8, 10, 5),
+  label = rep("Actual AI capability", 5)
+)
+
+# Define color palette
+my_colors <- c("Expected AI capability" = "red", "Actual AI Capability" = "blue")
+
+# Create the plot
+ggplot() +
+  # Add horizontal line
+  geom_hline(data = expected_capability, aes(yintercept = y, color = label), linetype = "dashed", size = 2) +
+  # Add zigzag lines
+  geom_path(data = zigzag_points, aes(x = x, y = y, color = "Actual AI Capability"), size = 2) +
+  # Add ribbon above and below the zigzag line
+  geom_ribbon(data = zigzag_points, aes(x = x, ymin = y, ymax = 10, fill = "Outside Frontier"), alpha = 0.2) +
+  geom_ribbon(data = zigzag_points, aes(x = x, ymin = 0, ymax = y, fill = "Inside Frontier"), alpha = 0.2) +
+  # Add points
+  geom_point(data = points_data, aes(x = x, y = y), size = 7) +
+  # Add labels and customize axes
+  labs(y = "Perceived Task Difficulty",
+       color = "Legend",
+       fill = "") +
+  scale_y_continuous(limits = c(0, 10)) +
+  scale_fill_manual(values = c("Outside Frontier" = "yellow", "Inside Frontier" = "purple")) + # Define fill colors for ribbons
+  theme_classic() +
+  theme(text = element_text(size = 21))   # Remove x-axis ticks
 ```
 
 ---
@@ -1053,6 +1053,7 @@ p1 <- p + geom_col(data = subset(binom_data, Size <= 19),
                     aes(x = Size, y = Probability), fill = "red") +
   ggtitle("ChatGPT Calculation") +
   xlim(c(8, 20.5)) + 
+  labs(x = "N People Who Survive") + 
   theme(text=element_text(size=21))
 
 # Plot with area above and including 19 shaded in blue
@@ -1060,6 +1061,7 @@ p2 <- p + geom_col(data = subset(binom_data, Size >= 19),
                     aes(x = Size, y = Probability), fill = "blue") +
   ggtitle("True Calculation") +
   xlim(c(8, 20.5)) + 
+  labs(x = "N People Who Survive") + 
   theme(text=element_text(size=21))
 
 # Arrange the plots in one window for easy comparison
