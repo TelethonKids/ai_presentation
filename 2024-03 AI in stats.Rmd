@@ -451,12 +451,6 @@ background-size: cover
 
 # Guiding Model Specification
 
---
-
-+ How effective could AI tools be to inform and guide data analysis?
-
---
-
 + **Types of decisions:**
   + Which model to run?
   + What format should data be in? What transformations are necessary?
@@ -465,6 +459,8 @@ background-size: cover
   + How can I best visualise the output?
 
 --
+
+<br>
 
 - **How can ChatGPT be prompted to lead us down a modelling pathway?**
 
@@ -590,17 +586,22 @@ knitr::include_graphics("images/log_reg_7.png")
 
 ## Comments
 
-- Answers appear **informed and accurate**.
+- Answers appear generally **informed and accurate**.
 
-  - Code successfully runs
-  - Specification seems appropriate
-  - Capable of identifying **variable transformations**
+  - Code successfully runs.
+  - Model specification is appropriate.
+  - Range of options to interpret output.
+  - Capable of identifying **variable transformations**.
 
 --
+
+<br>
 
 - Prompts, at face value, rely minimally on jargon.
 
 --
+
+<br>
 
 - How can we **be confident** in this specification, without being an expert?
 - Are we asking the **right questions**?
