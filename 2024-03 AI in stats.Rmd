@@ -466,7 +466,7 @@ background-size: cover
 
 --
 
-- How specific must prompts before a model can be output and coefficients interpreted?
+- **How can ChatGPT be prompted to lead us down a modelling pathway?**
 
 ---
 
@@ -485,7 +485,6 @@ Consider simulated lung cancer data from the [UCLA Office of Advanced Research C
 **We want to explore:**
 
 - How could patient- and physician-level factors relate to lung cancer remission following treatment?
-- How can ChatGPT be prompted to lead us down a modelling pathway?
 
 ---
 
