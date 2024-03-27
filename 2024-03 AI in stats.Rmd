@@ -3,7 +3,7 @@ title: "AI based chat bots in research"
 subtitle: "Incorporation of ChatGPT and other LLMs into statistical workflows"
 author: "Biometrics Team"
 institute: "Telethon Kids Institute"
-date: "2024/03/27 (updated: `r Sys.Date()`)"
+date: "`r Sys.Date()`"
 output:
   xaringan::moon_reader:
     lib_dir: libs
