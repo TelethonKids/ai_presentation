@@ -55,7 +55,13 @@ background-size: cover
   left: 50%;
   transform: translateX(-50%);
 }
+.title-slide {   
+  background-image: url("images/tki_pulsing.gif");   
+  background-image-width: 50%;   
+  background-size: 150px 150px;   
+  background-position: 100% 0%; ## just start changing this }
 </style>
+
 
 # It's getting hot in here?
 
@@ -898,94 +904,6 @@ ggplot(data, aes(x = Rating, y = Question)) +
 
 ---
 
-# The Jagged Frontier
-
-```{r echo = F, fig.width = 12, fig.height = 8, warning = F}
-expected_capability <- data.frame(y = 5, label = "Expected AI capability")
-
-# Create data for the points
-points_data <- data.frame(
-  x = c(1, 2, 3, 4, 5),  # Equally dispersed points on x-axis
-  y = c(7, 3, 5, 8, 4)   # Difficulty levels
-)
-
-# Define turning points for zigzag
-zigzag_points <- data.frame(
-  x = c(1, 2, 3, 4, 5),
-  y = c(6, 1, 7, 9, 4),
-  label = rep("Actual AI capability", 5)
-)
-
-# Define color palette
-my_colors <- c("Expected AI capability" = "red", "Actual AI Capability" = "blue")
-
-# Create the plot
-ggplot() +
-  # Add horizontal line
-  geom_hline(data = expected_capability, aes(yintercept = y, color = label), linetype = "dashed", size = 2) +
-  # Add zigzag lines
-  geom_path(data = zigzag_points, aes(x = x, y = y, color = "Actual AI Capability"), size = 2) +
-  # Add ribbon above and below the zigzag line
-  geom_ribbon(data = zigzag_points, aes(x = x, ymin = y, ymax = 10, fill = "Outside Frontier"), alpha = 0.2) +
-  geom_ribbon(data = zigzag_points, aes(x = x, ymin = 0, ymax = y, fill = "Inside Frontier"), alpha = 0.2) +
-  # Add points
-  geom_point(data = points_data, aes(x = x, y = y), size = 7) +
-  # Add labels and customize axes
-  labs(y = "Perceived Task Difficulty",
-       color = "Legend",
-       fill = "") +
-  scale_y_continuous(limits = c(0, 10)) +
-  scale_fill_manual(values = c("Outside Frontier" = "yellow", "Inside Frontier" = "purple")) + # Define fill colors for ribbons
-  theme_classic() +
-  theme(text = element_text(size = 21))   # Remove x-axis ticks
-```
-
----
-
-# A Moving Jagged Frontier - ChatGPT 5.0?
-
-```{r echo = F, fig.width = 12, fig.height = 8}
-expected_capability <- data.frame(y = 5, label = "Expected AI capability")
-
-# Create data for the points
-points_data <- data.frame(
-  x = c(1, 2, 3, 4, 5),  # Equally dispersed points on x-axis
-  y = c(7, 3, 5, 8, 4)   # Difficulty levels
-)
-
-# Define turning points for zigzag
-zigzag_points <- data.frame(
-  x = c(1, 2, 3, 4, 5),
-  y = c(7, 2, 8, 10, 5),
-  label = rep("Actual AI capability", 5)
-)
-
-# Define color palette
-my_colors <- c("Expected AI capability" = "red", "Actual AI Capability" = "blue")
-
-# Create the plot
-ggplot() +
-  # Add horizontal line
-  geom_hline(data = expected_capability, aes(yintercept = y, color = label), linetype = "dashed", size = 2) +
-  # Add zigzag lines
-  geom_path(data = zigzag_points, aes(x = x, y = y, color = "Actual AI Capability"), size = 2) +
-  # Add ribbon above and below the zigzag line
-  geom_ribbon(data = zigzag_points, aes(x = x, ymin = y, ymax = 10, fill = "Outside Frontier"), alpha = 0.2) +
-  geom_ribbon(data = zigzag_points, aes(x = x, ymin = 0, ymax = y, fill = "Inside Frontier"), alpha = 0.2) +
-  # Add points
-  geom_point(data = points_data, aes(x = x, y = y), size = 7) +
-  # Add labels and customize axes
-  labs(y = "Perceived Task Difficulty",
-       color = "Legend",
-       fill = "") +
-  scale_y_continuous(limits = c(0, 10)) +
-  scale_fill_manual(values = c("Outside Frontier" = "yellow", "Inside Frontier" = "purple")) + # Define fill colors for ribbons
-  theme_classic() +
-  theme(text = element_text(size = 21))   # Remove x-axis ticks
-```
-
----
-
 # One Example Reproduced
 
 The question:
@@ -1122,6 +1040,93 @@ knitr::include_graphics("images/reproduced_q6.PNG")
 
 ---
 
+# The Jagged Frontier
+
+```{r echo = F, fig.width = 12, fig.height = 8, warning = F}
+expected_capability <- data.frame(y = 5, label = "Expected AI capability")
+
+# Create data for the points
+points_data <- data.frame(
+  x = c(1, 2, 3, 4, 5),  # Equally dispersed points on x-axis
+  y = c(7, 3, 5, 8, 4)   # Difficulty levels
+)
+
+# Define turning points for zigzag
+zigzag_points <- data.frame(
+  x = c(1, 2, 3, 4, 5),
+  y = c(6, 1, 7, 9, 4),
+  label = rep("Actual AI capability", 5)
+)
+
+# Define color palette
+my_colors <- c("Expected AI capability" = "red", "Actual AI Capability" = "blue")
+
+# Create the plot
+ggplot() +
+  # Add horizontal line
+  geom_hline(data = expected_capability, aes(yintercept = y, color = label), linetype = "dashed", size = 2) +
+  # Add zigzag lines
+  geom_path(data = zigzag_points, aes(x = x, y = y, color = "Actual AI Capability"), size = 2) +
+  # Add ribbon above and below the zigzag line
+  geom_ribbon(data = zigzag_points, aes(x = x, ymin = y, ymax = 10, fill = "Outside Frontier"), alpha = 0.2) +
+  geom_ribbon(data = zigzag_points, aes(x = x, ymin = 0, ymax = y, fill = "Inside Frontier"), alpha = 0.2) +
+  # Add points
+  geom_point(data = points_data, aes(x = x, y = y), size = 7) +
+  # Add labels and customize axes
+  labs(y = "Perceived Task Difficulty",
+       color = "Legend",
+       fill = "") +
+  scale_y_continuous(limits = c(0, 10)) +
+  scale_fill_manual(values = c("Outside Frontier" = "yellow", "Inside Frontier" = "purple")) + # Define fill colors for ribbons
+  theme_classic() +
+  theme(text = element_text(size = 21))   # Remove x-axis ticks
+```
+
+---
+
+# A Moving Jagged Frontier - ChatGPT 5.0?
+
+```{r echo = F, fig.width = 12, fig.height = 8}
+expected_capability <- data.frame(y = 5, label = "Expected AI capability")
+
+# Create data for the points
+points_data <- data.frame(
+  x = c(1, 2, 3, 4, 5),  # Equally dispersed points on x-axis
+  y = c(7, 3, 5, 8, 4)   # Difficulty levels
+)
+
+# Define turning points for zigzag
+zigzag_points <- data.frame(
+  x = c(1, 2, 3, 4, 5),
+  y = c(7, 4, 8, 10, 5),
+  label = rep("Actual AI capability", 5)
+)
+
+# Define color palette
+my_colors <- c("Expected AI capability" = "red", "Actual AI Capability" = "blue")
+
+# Create the plot
+ggplot() +
+  # Add horizontal line
+  geom_hline(data = expected_capability, aes(yintercept = y, color = label), linetype = "dashed", size = 2) +
+  # Add zigzag lines
+  geom_path(data = zigzag_points, aes(x = x, y = y, color = "Actual AI Capability"), size = 2) +
+  # Add ribbon above and below the zigzag line
+  geom_ribbon(data = zigzag_points, aes(x = x, ymin = y, ymax = 10, fill = "Outside Frontier"), alpha = 0.2) +
+  geom_ribbon(data = zigzag_points, aes(x = x, ymin = 0, ymax = y, fill = "Inside Frontier"), alpha = 0.2) +
+  # Add points
+  geom_point(data = points_data, aes(x = x, y = y), size = 7) +
+  # Add labels and customize axes
+  labs(y = "Perceived Task Difficulty",
+       color = "Legend",
+       fill = "") +
+  scale_y_continuous(limits = c(0, 10)) +
+  scale_fill_manual(values = c("Outside Frontier" = "yellow", "Inside Frontier" = "purple")) + # Define fill colors for ribbons
+  theme_classic() +
+  theme(text = element_text(size = 21))   # Remove x-axis ticks
+```
+
+---
 
 class: inverse, top, center
 
