@@ -6,6 +6,7 @@ institute: "Telethon Kids Institute"
 date: "`r Sys.Date()`"
 output:
   xaringan::moon_reader:
+    self_contained: true
     lib_dir: libs
     chakra: libs/remark-latest.min.js
     includes:
@@ -26,6 +27,13 @@ output:
 # - run xaringan::summon_remark() 
 
 options(htmltools.dir.version = FALSE)
+
+knitr::opts_chunk$set(
+  fig.width = 8, 
+  fig.height = 8, 
+  dpi = 100
+)
+
 library(tidyverse); library(readxl); library(kableExtra); library(grid); library(png)
 
 theme_clean <- function() {
@@ -37,6 +45,7 @@ theme_clean <- function() {
                                     size = rel(1), hjust = 0),
           strip.background = element_rect(fill = "grey80", color = NA))
 }
+
 ```
 
 class: inverse, top, center
