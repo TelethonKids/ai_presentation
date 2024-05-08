@@ -195,6 +195,14 @@ This is an informal session, we do not have all the answers, please asks questio
 
 ---
 
+# Session Overview
+
+```{r echo=FALSE, out.width = '60%', fig.align='center'}
+knitr::include_graphics("images/cant_be.jpeg")
+```
+
+---
+
 # Some language
 
 LLM is a term you will may be familiar with. Large Language Model. 
