@@ -542,23 +542,23 @@ hpd %>%
 ## Modelling
 
 ```{r echo=FALSE, out.width = '90%', fig.align='center'}
-knitr::include_graphics("images/log_reg_1.png")
+knitr::include_graphics("images/log_reg_1_v2.png")
 ```
 
 ---
 
 ### Model 1
 
-```{r echo=FALSE, out.width = '70%', fig.align='center'}
-knitr::include_graphics("images/log_res_2.png")
+```{r echo=FALSE, out.width = '60%', fig.align='center'}
+knitr::include_graphics("images/log_res_2_v2.png")
 ```
 
 ---
 
 ### Model 2
 
-```{r echo=FALSE, out.width = '70%', fig.align='center'}
-knitr::include_graphics("images/log_res_3.png")
+```{r echo=FALSE, out.width = '60%', fig.align='center'}
+knitr::include_graphics("images/log_res_3_v2.png")
 ```
 
 ---
@@ -579,14 +579,6 @@ knitr::include_graphics("images/log_reg_6.png")
 
 ---
 
-## Interpretation: Odds Ratio
-
-```{r echo=FALSE, out.width = '60%', fig.align='center'}
-knitr::include_graphics("images/log_reg_5.png")
-```
-
----
-
 ## Model Diagnostics
 
 ```{r echo=FALSE, out.width = '70%', fig.align='center'}
@@ -597,6 +589,12 @@ knitr::include_graphics("images/hpd_vars.png")
 
 ```{r echo=FALSE, out.width = '90%', fig.align='center'}
 knitr::include_graphics("images/log_reg_7.png")
+```
+
+---## Interpretation: Odds Ratio
+
+```{r echo=FALSE, out.width = '60%', fig.align='center'}
+knitr::include_graphics("images/log_reg_5.png")
 ```
 
 ---
