@@ -24,7 +24,7 @@ output:
 # - install font (or modify theme_clean below
 #   - library(extrafont); font_import(pattern="Barlow") - YMMV
 # - run remotes::install_github('yihui/xaringan')
-# - run xaringan::summon_remark() 
+# - run xaringan::summon_remark()
 
 options(htmltools.dir.version = FALSE)
 
@@ -678,6 +678,7 @@ ggplot() +
   geom_point(data = points_data, aes(x = Tasks, y = y), size = 7) +
   # Add labels and customize axes
   labs(y = "Perceived Task Difficulty",
+       x = "Arbitrary Question Number",
        color = "Legend",
        fill = "") +
   scale_y_continuous(limits = c(0, 10)) +
@@ -715,6 +716,7 @@ ggplot() +
   geom_point(data = points_data, aes(x = Tasks, y = y), size = 7) +
   # Add labels and customize axes
   labs(y = "Perceived Task Difficulty",
+       x = "Arbitrary Question Number",
        color = "Legend",
        fill = "") +
   scale_y_continuous(limits = c(0, 10)) +
@@ -755,6 +757,7 @@ ggplot() +
   geom_point(data = points_data, aes(x = Tasks, y = y), size = 7) +
   # Add labels and customize axes
   labs(y = "Perceived Task Difficulty",
+       x = "Arbitrary Question Number",
        color = "Legend",
        fill = "") +
   scale_y_continuous(limits = c(0, 10)) +
@@ -839,7 +842,7 @@ So clearly we can't ignore the benefits of AI for tasks within the frontier!
 
 # A Hazy Jagged Frontier
 
-```{r echo = F, fig.width = 8, fig.height = 7}
+```{r echo = F, fig.width = 5, fig.height = 5}
 # Create data for the horizontal line
 expected_capability <- data.frame(y = 5, label = "Expected AI capability")
 
@@ -857,16 +860,17 @@ ggplot() +
   
   # Add points
   annotation_custom(gradient_bg, 0, 5, 0, 10) +
-  geom_point(data = points_data, aes(x = x, y = y), size = 7) +
+  geom_point(data = points_data, aes(x = x, y = y), size = 5) +
   # Add labels and customize axes
   labs(y = "Perceived Task Difficulty",
+       x = "Arbitrary Question Number",
        color = "Legend") +
   scale_y_continuous(limits = c(0, 10)) +
   theme_classic() +
   scale_color_gradient(low = "purple", high = "yellow", name = "Position",
                      labels = c("Inside Frontier", "Outside Frontier")) +
   guides(color = guide_legend(override.aes = list(size = 6))) +
-  theme(text=element_text(size=21))  # Remove x-axis ticks
+  theme(text=element_text(size=15))  # Remove x-axis ticks
 ```
 
 ---
@@ -927,7 +931,7 @@ Suppose the probability of surviving from a particular disease is 0.9 and there 
 
 --
 
-```{r echo = F, warning = F, message = F, fig.height = 5, fig.width = 6}
+```{r echo = F, warning = F, message = F, fig.height = 4, fig.width = 7}
 # Binomial distribution parameters
 size <- 20
 prob <- 0.9
@@ -944,7 +948,8 @@ ggplot(binom_data, aes(x = Size, y = Probability)) +
   xlim(c(8, 20.5)) +
   labs(x = "N People Who Survive") + 
   geom_col(data = subset(binom_data, Size >= 19), 
-           aes(x = Size, y = Probability), fill = "blue")
+           aes(x = Size, y = Probability), fill = "blue") +
+  theme(text=element_text(size=15))
 ```
 
 ---
@@ -1055,6 +1060,46 @@ knitr::include_graphics("images/reproduced_q6.PNG")
 
 ---
 
+# What about less 'Math-y' questions?
+
+```{r echo=FALSE, out.width = '100%', fig.align='center'}
+knitr::include_graphics("images/endodontic_paper.png")
+```
+
+https://onlinelibrary.wiley.com/doi/full/10.1111/iej.13985
+
+---
+
+## Methodology
+
+- ChatGPT 4.0 asked 60 yes or no questions relating to endodontics (branch of dentistry): 20 easy, 20 medium and 20 hard. 
+
+--
+
+- Each question asked 60 times using four different accounts at different times of day and across 10 days. 
+
+--
+
+- Measured the consistency of the 60 answers. 
+
+--
+
+- Two independent experts answered the questions and compared to ChatGPT so measure accuracy. 
+
+## Results
+
+```{r echo = F, warning = F}
+data.frame(
+  Difficulty = c("Easy", "Medium", "Hard", "All"),
+  Consistency = c("86.75%", "79.41%", "90.17%", "85.44%"),
+  Accuracy = c("49.25%", "64.58%", "58.17%", "57.33%")
+) %>%
+  kable() %>% kable_styling()
+```
+
+
+---
+
 # The Jagged Frontier
 
 ```{r echo = F, fig.width = 12, fig.height = 8, warning = F}
@@ -1089,6 +1134,7 @@ ggplot() +
   geom_point(data = points_data, aes(x = x, y = y), size = 7) +
   # Add labels and customize axes
   labs(y = "Perceived Task Difficulty",
+       x = "Arbitrary Question Number",
        color = "Legend",
        fill = "") +
   scale_y_continuous(limits = c(0, 10)) +
@@ -1113,7 +1159,7 @@ points_data <- data.frame(
 # Define turning points for zigzag
 zigzag_points <- data.frame(
   x = c(1, 2, 3, 4, 5),
-  y = c(7, 4, 8, 10, 5),
+  y = c(8, 2, 8, 10, 5),
   label = rep("Actual AI capability", 5)
 )
 
@@ -1133,6 +1179,7 @@ ggplot() +
   geom_point(data = points_data, aes(x = x, y = y), size = 7) +
   # Add labels and customize axes
   labs(y = "Perceived Task Difficulty",
+       x = "Arbitrary Question Number",
        color = "Legend",
        fill = "") +
   scale_y_continuous(limits = c(0, 10)) +
