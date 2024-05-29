@@ -1184,6 +1184,23 @@ ggplot() +
 
 ---
 
+# When to (and not to) use AI?
+
+We asked the question earlier - "How would we know the model specification was correct if we were not an expert?"
+
+With that in mind, we suggest two guidelines for using AI effectively:
+
+--
+
+- You should be able to verify the AI output is true/accurate with a reasonable and responsible degree of certainty. 
+
+--
+
+- The time it would take you to verify the AI output should be less than the time it would have taken to get the same output yourself.
+
+
+---
+
 class: inverse, top, center
 
 background-image: url("images/promo_AI_other.png")
