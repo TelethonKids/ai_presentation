@@ -462,7 +462,7 @@ background-size: cover
 + **Types of decisions:**
   + What sort of model should be run?
   + What format should the data be in? 
-  + How should we handle any model complexities?
+  + How could any modelling complexities be handled?
   + How should we interpret or visualise the model's output?
   + What variable transformations might be necessary for better model fit?
 
@@ -1181,22 +1181,6 @@ ggplot() +
   theme_classic() +
   theme(text = element_text(size = 21))   # Remove x-axis ticks
 ```
-
----
-
-# When to (and not to) use AI
-
-We asked the question earlier - "How would we know the model specification was correct if we were not an expert?"
-
-With that in mind, we suggest two guidelines for using AI effectively:
-
---
-
-- You should be able to verify the AI output is true/accurate. 
-
---
-
-- The time it would take you to verify the AI output should be less than the time it would have taken to get the same output yourself.
 
 ---
 
