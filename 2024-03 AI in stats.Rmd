@@ -459,17 +459,17 @@ background-size: cover
 # Guiding Model Specification
 
 + **Types of decisions:**
-  + Which model to run?
-  + What format should data be in? What transformations are necessary?
-  + How can modelling complexities be handled?
-  + How can output be interpreted? 
-  + How can I best visualise the output?
+  + What sort of model should be run?
+  + What format should the data be in? 
+  + How could any modelling complexities be handled?
+  + How should we interpret or visualise the model's output?
+  + What variable transformations might be necessary for better model fit?
 
 --
 
 <br>
 
-- **How can ChatGPT be prompted to lead us down a modelling pathway?**
+- **Could ChatGPT be prompted to guide us through this modelling process?**
 
 ---
 
@@ -499,7 +499,7 @@ Consider simulated lung cancer data from the [UCLA Office of Advanced Research C
   - IL6 levels
   - CRP levels
   - Length of hospital stay
-  - Family histogry
+  - Family history
   - Cancer stage
 - **Physician-level variables**
   - Physician experience
@@ -595,7 +595,7 @@ knitr::include_graphics("images/log_reg_5.png")
 
   - Code successfully runs.
   - Model specification is appropriate.
-  - Range of options to interpret output.
+  - Range of options for interpreting model output.
   - Capable of identifying **variable transformations**.
 
 --
@@ -608,7 +608,7 @@ knitr::include_graphics("images/log_reg_5.png")
 
 <br>
 
-- How can we **be confident** in this specification, without being an expert?
+- How can we **be confident** in these answers, without being an expert?
 - Are we asking the **right questions**?
 
 ---
