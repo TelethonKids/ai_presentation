@@ -764,9 +764,15 @@ ggplot() +
 
 - Two projects devised, one inside the frontier, the other outside (for ChatGPT 4.0)
 
+--
+
 - Participants (N = 758 strategic consultants) randomised to one of the two projects.
 
+--
+
 - Projects contained 18 sequential tasks of four kinds (creative, analytical, writing, persuasiveness)
+
+--
 
 - Participants further randomised to either "ChatGPT" or "ChatGPT + Overview"
 
@@ -785,7 +791,11 @@ data.frame(
 
 - First all participants complete a baseline project without ChatGPT.
 
+--
+
 - Inside/Outside groups complete respective projects.
+
+--
 
 - Speed and quality of work compared between groups against baseline levels. 
 
